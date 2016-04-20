@@ -5,8 +5,8 @@ public class PATTLE : MonoBehaviour {
 
 
 	public Vector3 pattlePosition;
-	public Vector3 pattleVelocity;
-	public float pattleSpeed = 1f;
+	public static Vector3 pattleVelocity;
+	public static float pattleSpeed = 0.1f;
 
 	public bool touchBall;
 	public bool hazKittens;

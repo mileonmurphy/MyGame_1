@@ -171,6 +171,7 @@ GameObject:
   - 114: {fileID: 405686478}
   - 61: {fileID: 405686482}
   - 50: {fileID: 405686481}
+  - 61: {fileID: 405686483}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -192,6 +193,10 @@ MonoBehaviour:
   ballStartVelocity: 500
   ballCollider: {fileID: 0}
   liveBall: 0
+  angle: 0
+  ballPos: 0
+  posDiff: 0
+  PATTLE: {fileID: 1292667148}
 --- !u!212 &405686479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -242,7 +247,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -254,13 +259,26 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405686477}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 6200000, guid: a9f7dfda1a99278438700a88dae502bd, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 1.52587891e-05}
   serializedVersion: 2
   m_Size: {x: 10.0799999, y: 6.29999971}
+--- !u!61 &405686483
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 405686477}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: a9f7dfda1a99278438700a88dae502bd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 1.1920929e-07, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 10.0799999, y: 6.30000114}
 --- !u!1 &444896916
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 902904288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0299999993, y: 3.91000009, z: 0}
+  m_LocalPosition: {x: -.0299999993, y: 4.01000023, z: 0}
   m_LocalScale: {x: 1.5539062, y: .0374994874, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -650,7 +668,7 @@ GameObject:
   - 61: {fileID: 1292667152}
   m_Layer: 0
   m_Name: PATTLE
-  m_TagString: Untagged
+  m_TagString: Pattle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -668,8 +686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pattlePosition: {x: 0, y: 0, z: 0}
-  pattleVelocity: {x: 0, y: 0, z: 0}
-  pattleSpeed: .25
   touchBall: 0
   hazKittens: 0
 --- !u!212 &1292667150
