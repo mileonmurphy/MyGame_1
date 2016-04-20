@@ -5,12 +5,14 @@ public class brick : MonoBehaviour {
 
     public GameObject myBrick;
 
-    //called when the ball collides with this object
-    void OnCollisionEnter(Collision other)
-    {
+	void Start(){
+		myBrick = this.gameObject;
+	}
 
-        Instantiate(myBrick, transform.position, Quaternion.identity);
+    //called when the ball collides with this object
+    void OnCollisionEnter2D(Collision2D other)
+    {
         gameController.instance.DestroyBrick();
-        Destroy(gameObject);
+        Destroy(myBrick);
     }
 }
