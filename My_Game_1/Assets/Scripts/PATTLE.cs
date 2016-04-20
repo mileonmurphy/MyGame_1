@@ -15,7 +15,7 @@ public class PATTLE : MonoBehaviour {
 
 	// start our paddle in the designated position, assign pattlePosition
 	void Start () {
-		pattlePosition = transform.position;
+		//pattlePosition = transform.position;
 	}
 	
 	// move the paddle based on player input, update vars

@@ -13,7 +13,7 @@ public class gameController : MonoBehaviour {
     public GameObject pattle;
 
     public static gameController instance = null;
-    public GameObject clonePattle;
+    //public GameObject clonePattle;
 
 	// Use this for initialization
 	void Awake () {
@@ -37,7 +37,7 @@ public class gameController : MonoBehaviour {
 
     void Setup()
     {
-        clonePattle = Instantiate(pattle, transform.position, Quaternion.identity) as GameObject;
+        //clonePattle = Instantiate(pattle, transform.position, Quaternion.identity) as GameObject;
         Instantiate(brickObject, transform.position, Quaternion.identity);
     }
 
@@ -70,14 +70,14 @@ public class gameController : MonoBehaviour {
     {
         lives--;
         //change text of lives UI object
-        Destroy(clonePattle);
+        //Destroy(clonePattle);
         Invoke("SetUpPattle", resetDelay);
         gameStatus();
     }
 
     void SetUpPattle()
     {
-        clonePattle = Instantiate(pattle, transform.position, Quaternion.identity) as GameObject;
+        //clonePattle = Instantiate(pattle, transform.position, Quaternion.identity) as GameObject;
 
     }
 

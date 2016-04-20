@@ -8,6 +8,7 @@ public class brick : MonoBehaviour {
     //called when the ball collides with this object
     void OnCollisionEnter(Collision other)
     {
+
         Instantiate(myBrick, transform.position, Quaternion.identity);
         gameController.instance.DestroyBrick();
         Destroy(gameObject);

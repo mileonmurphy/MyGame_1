@@ -4,7 +4,7 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
     //we want our ball to start with some velocity
-    public float ballStartVelocity = 500f;
+    public float ballStartVelocity = 750f;
 
     public Rigidbody2D ballCollider;
     public bool liveBall;
@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour {
             transform.parent = null;
             liveBall = true;
             ballCollider.isKinematic = false;
-            ballCollider.AddForce(new Vector3(ballStartVelocity, ballStartVelocity, 0));
+            ballCollider.AddForce(new Vector3(0, ballStartVelocity, 0));
         }
     }
 }
