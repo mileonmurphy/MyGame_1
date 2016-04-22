@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour {
 	 void OnCollisionEnter2D(Collision2D other)
 		{
 		if (other.gameObject.CompareTag ("Pattle")) {
-			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
+			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * 3) + ballCollider.velocity.x, ballCollider.velocity.y);
 			//ballCollider.velocity += pattle.getVel();
 			if(ballCollider.velocity.magnitude >= maxSpeed){
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
