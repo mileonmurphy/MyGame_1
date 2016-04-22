@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour {
 	public float ballPos;
 	public float posDiff;
 
-	public GameObject PATTLE;
+	public PATTLE pattle;
 	//protected transform pTransform;
 
 	// Use this for initialization
@@ -32,8 +32,8 @@ public class Ball : MonoBehaviour {
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
-
-		 angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
+		Debug.DrawLine (transform.position, pattle.transform.position,Color.red);
+		angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - pattle.transform.position);// ballPos = transform.Position.x;
 
 	}
 
@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour {
 		{
 		if (other.gameObject.CompareTag ("Pattle")) {
 			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
-			ballCollider.velocity += PATTLE.GetComponent(PATTLE).getVel();
+			//ballCollider.velocity += pattle.getVel();
 			if(ballCollider.velocity.magnitude >= maxSpeed){
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 			}
