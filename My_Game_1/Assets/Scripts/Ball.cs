@@ -5,8 +5,7 @@ public class Ball : MonoBehaviour {
 
     //we want our ball to start with some velocity
     public float ballStartVelocity = 200f;
-
-	float maxSpeed = 200f;
+	public float maxSpeed = 200f;
 
     public Rigidbody2D ballCollider;
     public bool liveBall;
@@ -41,12 +40,21 @@ public class Ball : MonoBehaviour {
 		{
 		if (other.gameObject.CompareTag ("Pattle")) {
 			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
-			ballCollider.velocity += PATTLE.GetComponent(PATTLE).getVel();
-			if(ballCollider.velocity.magnitude >= maxSpeed){
+			if (ballCollider.velocity.magnitude > maxSpeed) {
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 			}
 		}
-			print (Mathf.Cos (angle));
+			//print (Mathf.Cos (angle));
 		}
+
+	void OnBecameInvisible()
+	{
+		gameController.instance.loseLife ();
+		liveBall = false;
+		ballCollider.isKinematic = true;
+		transform.position = PATTLE.transform.position;
+		transform.position += new Vector3(0f,.75f,0f);
+		transform.SetParent (PATTLE.transform);
+	}
 
 }
