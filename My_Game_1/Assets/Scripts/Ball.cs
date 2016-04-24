@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour {
 	public float ballPos;
 	public float posDiff;
 
-	public GameObject PATTLE;
+	public GameObject livePattle;
 	//protected transform pTransform;
 
 	// Use this for initialization
@@ -25,19 +25,22 @@ public class Ball : MonoBehaviour {
 	// if starting a new ball reset everything, give ball starting velocity
 	void Update () {
 
-		if (Input.GetButtonDown ("Fire1") && liveBall == false) {
+		//code to fire the ball using either spacebar or mouse click
+		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false) {
 			transform.parent = null;
 			liveBall = true;
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
 
-		 angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
+		//needs work
+		 angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - livePattle.transform.position);// ballPos = transform.Position.x;
 
 	}
 
 	 void OnCollisionEnter2D(Collision2D other)
 		{
+		//sees if it is hitting the pattle, applies directional force
 		if (other.gameObject.CompareTag ("Pattle")) {
 			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
 			if (ballCollider.velocity.magnitude > maxSpeed) {
@@ -47,14 +50,15 @@ public class Ball : MonoBehaviour {
 			//print (Mathf.Cos (angle));
 		}
 
+	//reposition the ball and reset it when it goes outside the camera view
 	void OnBecameInvisible()
 	{
 		gameController.instance.loseLife ();
 		liveBall = false;
 		ballCollider.isKinematic = true;
-		transform.position = PATTLE.transform.position;
+		transform.position = livePattle.transform.position;
 		transform.position += new Vector3(0f,.75f,0f);
-		transform.SetParent (PATTLE.transform);
+		transform.SetParent (livePattle.transform);
 	}
 
 }

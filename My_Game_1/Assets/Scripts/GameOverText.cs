@@ -10,15 +10,12 @@ public class GameOverText : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myText = myTextObject.GetComponent<Text> ();
+		print (gameController.score);
 		myText.text = "Score: " + gameController.score.ToString ();
 	}
 
-	void Update()
+	public void LoadMenu ()
 	{
-		//testButton = Input.GetKey ();
-		if(testButton != null)
-		{
-			Application.LoadLevel("Title");
-		}
+		Application.LoadLevel("Title");
 	}
 }
