@@ -7,7 +7,6 @@ public class brick : MonoBehaviour {
 	//don't destroy brick until after force is applied to ball
     void OnCollisionExit2D(Collision2D other)
     {
-        gameController.instance.DestroyBrick();
-        Destroy(gameObject);
+		gameController.instance.DestroyBrick(gameObject);
     }
 }

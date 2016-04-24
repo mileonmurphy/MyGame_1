@@ -752,10 +752,11 @@ MonoBehaviour:
   pattle: {fileID: 431077544}
   ball: {fileID: 457799066}
   clonePattle: {fileID: 0}
+  guy: {fileID: 1706096602}
   scoreTextObj: {fileID: 2125134038}
   lifeTextObj: {fileID: 1723783702}
-  scoreText: {fileID: 0}
-  lifeText: {fileID: 0}
+  scoreText: {fileID: 2125134040}
+  lifeText: {fileID: 1723783704}
 --- !u!4 &1631264342
 Transform:
   m_ObjectHideFlags: 0
@@ -926,7 +927,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a0052ad172c2ee8418fc5acd1bbefc23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -937,8 +938,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1706096601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21560721, y: 0.9216682, z: -0.04296875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -14.73, y: -4.2, z: -0.04296875}
+  m_LocalScale: {x: -0.26806808, y: -0.26806805, z: -0.26806805}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7

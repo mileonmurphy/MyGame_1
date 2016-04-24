@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour {
 
 	}
 
-	 void OnCollisionEnter2D(Collision2D other)
+	 void OnCollisionExit2D(Collision2D other)
 	{
 		if (other.gameObject.CompareTag ("Pattle")) {
 			/*ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);

@@ -16,6 +16,7 @@ public class gameController : MonoBehaviour {
     public GameObject pattle;
 	public GameObject ball;
 	public GameObject clonePattle;
+	public AnnoyingGuy guy;
 
 	public GameObject scoreTextObj, lifeTextObj;
 	public Text scoreText, lifeText;
@@ -76,8 +77,10 @@ public class gameController : MonoBehaviour {
     public void loseLife()
     {
         lives--;
-		lifeText = lifeTextObj.GetComponent<Text> ();
-		lifeText.text = "Lives: " + lives.ToString ();
+		if (lifeText) {
+			lifeText = lifeTextObj.GetComponent<Text> ();
+			lifeText.text = "Lives: " + lives.ToString ();
+		}
 		//Destroy (clonePattle);
         //Invoke("SetUpPattle", resetDelay);
         gameStatus();
@@ -93,8 +96,11 @@ public class gameController : MonoBehaviour {
 
     }
 
-    public void DestroyBrick()
+    public void DestroyBrick(GameObject destroyedBrick)
     {
+		guy.rebuildBrick(destroyedBrick);
+		Vector2 p = destroyedBrick.transform.position; // shorthand
+		destroyedBrick.transform.position = new Vector3 (p.x, p.y-10000,-1); // move out of sight
         bricks--;
 		bricksDestroyed++;
 		score += 30 * bricksDestroyed;

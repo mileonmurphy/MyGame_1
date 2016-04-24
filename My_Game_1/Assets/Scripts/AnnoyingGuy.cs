@@ -8,6 +8,7 @@ public class AnnoyingGuy : MonoBehaviour {
 	protected Vector3 targetPos;
 	protected Vector3 startPos;
 	public brick brickPrefab;
+	protected GameObject brickToBuild;
 
 	// Use this for initialization
 	void Start () {
@@ -32,9 +33,10 @@ public class AnnoyingGuy : MonoBehaviour {
 		}
 	}
 
-	public void rebuildBrick(Vector3 pos) {
+	public void rebuildBrick(GameObject brickToBuildArg) {
 		state = 1;
-		targetPos = pos;
+		brickToBuild = brickToBuildArg;
+		targetPos = brickToBuild.transform.position;
 		startPos = transform.position;
 		timer = 0;
 	}
@@ -53,7 +55,12 @@ public class AnnoyingGuy : MonoBehaviour {
 		// timer until complete
 		if (timer > 1) {
 			state = 0;
-			GameObject.Instantiate (brickPrefab,targetPos,Quaternion.identity);
+			// move brick back in front of the camera
+			brickToBuild.transform.position = new Vector3(
+				brickToBuild.transform.position.x,
+				brickToBuild.transform.position.y+10000,
+				-1);
+			//GameObject.Instantiate (brickPrefab,targetPos,Quaternion.identity);
 		}
 	}
 }
