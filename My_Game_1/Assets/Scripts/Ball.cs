@@ -14,6 +14,9 @@ public class Ball : MonoBehaviour {
 	public float ballPos;
 	public float posDiff;
 
+	public float deflectionPower = 5;
+	public float centerWidth = 0.6f;
+
 	public GameObject PATTLE;
 	//protected transform pTransform;
 
@@ -32,20 +35,38 @@ public class Ball : MonoBehaviour {
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
 
-		 angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
+
+		// angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
+		ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 
 	}
 
 	 void OnCollisionEnter2D(Collision2D other)
-		{
+	{
 		if (other.gameObject.CompareTag ("Pattle")) {
-			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
+			/*ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
 			if (ballCollider.velocity.magnitude > maxSpeed) {
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
+			}*/
+			float ballX = ballCollider.transform.position.x;
+			float pattleX = other.transform.position.x;
+			// if on the left side
+			if (ballX < pattleX - centerWidth/2.0f) {
+				// deflect left
+				ballCollider.velocity = new Vector2(ballCollider.velocity.x - deflectionPower, ballCollider.velocity.y);
+			// if in the center
+			} else if (ballX < pattleX + centerWidth/2.0f) {
+				// just bounce normally
+				// do nothing
+			// if on the right
+			} else {
+				// deflect right
+				ballCollider.velocity = new Vector2(ballCollider.velocity.x + deflectionPower, ballCollider.velocity.y);
 			}
+			ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 		}
-			//print (Mathf.Cos (angle));
-		}
+		//print (Mathf.Cos (angle));
+	}
 
 	void OnBecameInvisible()
 	{
