@@ -353,12 +353,21 @@ Prefab:
       propertyPath: maxSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11490390, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
+      propertyPath: ballCollider
+      value: 
+      objectReference: {fileID: 457799068}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &457799066 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 124822, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
+  m_PrefabInternal: {fileID: 457799065}
+--- !u!50 &457799068 stripped
+Rigidbody2D:
+  m_PrefabParentObject: {fileID: 5003176, guid: dbf1483ca3037a24f93f2af9df986a6a,
+    type: 2}
   m_PrefabInternal: {fileID: 457799065}
 --- !u!1001 &565250176
 Prefab:
