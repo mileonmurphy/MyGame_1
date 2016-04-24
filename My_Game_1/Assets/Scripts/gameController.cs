@@ -11,6 +11,7 @@ public class gameController : MonoBehaviour {
 
     public GameObject brickObject;
     public GameObject pattle;
+	public AnnoyingGuy Guy;
 
     public static gameController instance = null;
     //public GameObject clonePattle;

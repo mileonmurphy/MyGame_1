@@ -6,9 +6,11 @@ public class brick : MonoBehaviour {
     //public GameObject myBrick;
 	protected float destroyTimer = 0f;
 	protected float timeUntilDestroy = -1f;
+	protected gameController gc;
 
 	void Start(){
 		//myBrick = this.gameObject;
+		gc = FindObjectOfType<gameController>();
 	}
 
 	void Update() {
@@ -17,6 +19,9 @@ public class brick : MonoBehaviour {
 			// update timer
 			destroyTimer += Time.deltaTime;
 			if (destroyTimer > timeUntilDestroy) {
+				print ("brick pos: " + transform.position);
+				gc.Guy.rebuildBrick (transform.position);
+				gc.DestroyBrick ();
 				Destroy (this.gameObject);
 			}
 		}
@@ -24,7 +29,7 @@ public class brick : MonoBehaviour {
 
     //called when the ball collides with this object
     void OnCollisionEnter2D(Collision2D other)
-    {	
+    {
 		timeUntilDestroy = 0.1f;
 		//gameController.instance.DestroyBrick();
 
