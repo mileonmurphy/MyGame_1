@@ -18,10 +18,13 @@ public class Ball : MonoBehaviour {
 	public float centerWidth = 0.6f;
 
 	public GameObject PATTLE;
+
+	gameController gc;
 	//protected transform pTransform;
 
 	// Use this for initialization
 	void Awake () {
+		gc = gameController.instance;
         ballCollider = GetComponent<Rigidbody2D>();
 	}
 	
@@ -51,19 +54,24 @@ public class Ball : MonoBehaviour {
 			float ballX = ballCollider.transform.position.x;
 			float pattleX = other.transform.position.x;
 			// if on the left side
-			if (ballX < pattleX - centerWidth/2.0f) {
+			if (ballX < pattleX - centerWidth / 2.0f) {
 				// deflect left
-				ballCollider.velocity = new Vector2(ballCollider.velocity.x - deflectionPower, ballCollider.velocity.y);
-			// if in the center
-			} else if (ballX < pattleX + centerWidth/2.0f) {
+				ballCollider.velocity = new Vector2 (ballCollider.velocity.x - deflectionPower, ballCollider.velocity.y);
+				// if in the center
+			} else if (ballX < pattleX + centerWidth / 2.0f) {
 				// just bounce normally
 				// do nothing
-			// if on the right
+				// if on the right
 			} else {
 				// deflect right
-				ballCollider.velocity = new Vector2(ballCollider.velocity.x + deflectionPower, ballCollider.velocity.y);
+				ballCollider.velocity = new Vector2 (ballCollider.velocity.x + deflectionPower, ballCollider.velocity.y);
 			}
 			ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
+			gc.sounds.Play("paddle hit");
+		} else if (other.gameObject.name.Contains("Block")) {
+			gc.sounds.Play("brick hit");
+		} else {
+			gc.sounds.Play("wall hit");
 		}
 		//print (Mathf.Cos (angle));
 	}

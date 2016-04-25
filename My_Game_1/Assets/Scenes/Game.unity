@@ -347,11 +347,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490390, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: ballStartVelocity
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11490390, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: maxSpeed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11490390, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: ballCollider
@@ -723,6 +723,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1631264342}
   - 114: {fileID: 1631264341}
+  - 114: {fileID: 1631264343}
   m_Layer: 0
   m_Name: gameController
   m_TagString: Untagged
@@ -757,6 +758,7 @@ MonoBehaviour:
   lifeTextObj: {fileID: 1723783702}
   scoreText: {fileID: 2125134040}
   lifeText: {fileID: 1723783704}
+  sounds: {fileID: 0}
 --- !u!4 &1631264342
 Transform:
   m_ObjectHideFlags: 0
@@ -769,6 +771,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1631264343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1631264340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9302c851a1d8b4d4fb46ce3f7bbc1507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1648835145
 GameObject:
   m_ObjectHideFlags: 0

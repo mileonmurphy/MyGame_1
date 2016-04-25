@@ -9,6 +9,8 @@ public class AnnoyingGuy : MonoBehaviour {
 	protected Vector3 startPos;
 	public brick brickPrefab;
 	protected GameObject brickToBuild;
+	float targetDist;
+	float speed = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -38,14 +40,15 @@ public class AnnoyingGuy : MonoBehaviour {
 		brickToBuild = brickToBuildArg;
 		targetPos = brickToBuild.transform.position;
 		startPos = transform.position;
+		targetDist = (targetPos - startPos).magnitude;
 		timer = 0;
 	}
 
 	protected void MovingToBrick() {
 		// move towards brick
-		transform.position = Vector3.Lerp(startPos, targetPos, timer);
+		transform.position = Vector3.Lerp(startPos, targetPos, speed * timer / targetDist);
 		// if you reach the brick, change state
-		if (timer > 1) {
+		if (speed * timer > targetDist) {
 			state = 2;
 			timer = 0;
 		}
@@ -53,7 +56,7 @@ public class AnnoyingGuy : MonoBehaviour {
 
 	protected void BuildingBrick() {
 		// timer until complete
-		if (timer > 1) {
+		if (timer > 2) {
 			state = 0;
 			// move brick back in front of the camera
 			brickToBuild.transform.position = new Vector3(

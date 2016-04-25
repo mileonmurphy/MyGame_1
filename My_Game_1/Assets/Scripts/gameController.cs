@@ -21,6 +21,8 @@ public class gameController : MonoBehaviour {
 	public GameObject scoreTextObj, lifeTextObj;
 	public Text scoreText, lifeText;
 
+	public SoundController sounds;
+
     public static gameController instance = null;
     //public GameObject clonePattle;
 
@@ -51,6 +53,7 @@ public class gameController : MonoBehaviour {
     {
 		//clonePattle = Instantiate (pattle, new Vector3(-.146f,-4.49f,-1f), Quaternion.identity) as GameObject;
 		//Instantiate (brickFormation, new Vector3 (1.2612f, .1567f, -1f), Quaternion.identity);
+		sounds = GetComponent<SoundController>();
     }
 
     void gameStatus()
