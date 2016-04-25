@@ -168,7 +168,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .177000001
+      value: .829999983
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalPosition.y
@@ -196,7 +196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 157344, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_TagString
@@ -204,7 +204,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalScale.x
-      value: .0864819139
+      value: .14823699
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
@@ -296,11 +296,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .0199999996
+      value: .13491936
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 24
+      value: 409
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -328,7 +328,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalScale.x
-      value: .203573912
+      value: .118765637
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalScale.y
@@ -341,6 +341,14 @@ Prefab:
     - target: {fileID: 5003176, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490390, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
+      propertyPath: livePattle
+      value: 
+      objectReference: {fileID: 431077544}
+    - target: {fileID: 124822, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
+      propertyPath: m_TagString
+      value: Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
@@ -645,6 +653,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf96c6c533df3ba42a7681245ec78edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kittenHolderObject: {fileID: 139232, guid: a26552d4adfcb6047843b6a03405710c, type: 2}
+  kcl: {fileID: 172922, guid: fc84f4d265944114295ecd390b6cee0c, type: 2}
+  kcr: {fileID: 170982, guid: 3521d568e47d32840816ec355ebe4176, type: 2}
+  kjl: {fileID: 189272, guid: ac12da62bf3cf8d4a8e17bdc66815811, type: 2}
+  kjr: {fileID: 197932, guid: b234d985e2e9d4c449113a650efc7f81, type: 2}
+  pattleTarget: {fileID: 0}
 --- !u!4 &1337816503
 Transform:
   m_ObjectHideFlags: 0

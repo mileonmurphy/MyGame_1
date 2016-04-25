@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
 	public float maxSpeed = 200f;
 
     public Rigidbody2D ballCollider;
-    public bool liveBall;
+    public static bool liveBall, firstHit;
 
 	public float angle;
 	public float ballPos;
@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour {
 		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false) {
 			transform.parent = null;
 			liveBall = true;
+			firstHit = false;
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
@@ -40,14 +41,14 @@ public class Ball : MonoBehaviour {
 
 	 void OnCollisionEnter2D(Collision2D other)
 		{
+		firstHit = true;
 		//sees if it is hitting the pattle, applies directional force
 		if (other.gameObject.CompareTag ("Pattle")) {
 			ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
-			if (ballCollider.velocity.magnitude > maxSpeed) {
-				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
-			}
 		}
-			//print (Mathf.Cos (angle));
+		if (ballCollider.velocity.magnitude > maxSpeed) {
+			ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
+		}
 		}
 
 	//reposition the ball and reset it when it goes outside the camera view
@@ -55,9 +56,10 @@ public class Ball : MonoBehaviour {
 	{
 		gameController.instance.loseLife ();
 		liveBall = false;
+		firstHit = false;
 		ballCollider.isKinematic = true;
 		transform.position = livePattle.transform.position;
-		transform.position += new Vector3(0f,.75f,0f);
+		transform.position += new Vector3(0f,.5f,0f);
 		transform.SetParent (livePattle.transform);
 	}
 
