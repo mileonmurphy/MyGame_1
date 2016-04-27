@@ -17,6 +17,9 @@ public class Ball : MonoBehaviour {
 	public float deflectionPower = 5;
 	public float centerWidth = 0.6f;
 
+	protected Transform lastPos;
+	public bool headedDown;
+
 	public GameObject PATTLE;
 
 	gameController gc;
@@ -37,11 +40,17 @@ public class Ball : MonoBehaviour {
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
-
-
 		// angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
 		ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.CompareTag ("Portal")) {
+			GameObject.FindGameObjectWithTag("Portals").GetComponent<Portals>().EndPortal();
+			Destroy(GameObject.FindGameObjectWithTag("Portal"));
+			ResetBall();
+		}
 	}
 
 	 void OnCollisionExit2D(Collision2D other)
@@ -67,10 +76,14 @@ public class Ball : MonoBehaviour {
 				ballCollider.velocity = new Vector2 (ballCollider.velocity.x + deflectionPower, ballCollider.velocity.y);
 			}
 			ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
+			headedDown = false;
 			gc.sounds.Play("paddle hit");
 		} else if (other.gameObject.name.Contains("Block")) {
 			gc.sounds.Play("brick hit");
-		} else {
+			headedDown = true;
+		} else if(other.gameObject.CompareTag("Portal")){
+			//do nothing
+		}else{
 			gc.sounds.Play("wall hit");
 		}
 		//print (Mathf.Cos (angle));
@@ -86,4 +99,19 @@ public class Ball : MonoBehaviour {
 		transform.SetParent (PATTLE.transform);
 	}
 
+	public void ResetBall(){
+		headedDown = false;
+		gameController.instance.loseLife ();
+		liveBall = false;
+		ballCollider.velocity = new Vector2 (0, 0);
+		ballCollider.isKinematic = true;
+		transform.position = PATTLE.transform.position;
+		transform.position += new Vector3(0f,.75f,0f);
+		transform.SetParent (PATTLE.transform);
+	}
+
+	//find out if ball is headed down
+	public bool GetHeadedDown(){
+		return headedDown;
+	}
 }
