@@ -22,8 +22,13 @@ public class Portals : MonoBehaviour {
 	public GameObject finPrefab;
 	public GameObject frogPrefab;
 
-	// Use this for initialization
-	void Start () {
+    bool isShrinking = false;
+
+    //reference to portal object
+    GameObject port = null;
+
+    // Use this for initialization
+    void Start () {
 		ballCollider = ballRef.GetComponent<Rigidbody2D> ();
 		portalExists = false;
 	}
@@ -50,9 +55,7 @@ public class Portals : MonoBehaviour {
 	}
 
 	protected void MakingPortal(){
-		//reference to portal object
-		GameObject port = null;
-
+  
 		//if ball is headed down and somewhat in middle of screen
 		if (ballRef.GetComponent<Ball> ().GetHeadedDown()){ //&& (ballRef.transform.position - pattleRef.transform.position).magnitude > 2){
 			targetPos = new Vector3(ballCollider.position.x + (ballCollider.velocity.normalized * targDist).x, ballCollider.position.y + (ballCollider.velocity.normalized * targDist).y, 0);
@@ -73,7 +76,14 @@ public class Portals : MonoBehaviour {
 		if (portalExists) {
 			//scale portal up
 			if(port != null){
-				port.transform.localScale += Vector3.one * scaleRate;
+                if (isShrinking)
+                {
+                    Shrinking();
+                }
+                else
+                {
+                    Growing();
+                }
 
 				//spin portal
 				port.transform.Rotate(Vector3.back, 2.0f);
@@ -89,7 +99,23 @@ public class Portals : MonoBehaviour {
 
 	}
 
+    public void FlipScaleRate()
+    {
+        isShrinking = !isShrinking;
+    }
+
 	public void EndPortal(){
 		portalExists = false;
+        FlipScaleRate();
 	}
+
+    public void Shrinking()
+    {
+        port.transform.localScale += Vector3.one * scaleRate;
+    }
+
+    public void Growing()
+    {
+        port.transform.localScale -= Vector3.one * scaleRate;
+    }
 }
