@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Pattle
   - Ball
+  - Portal
+  - Shark
+  - Frog
+  - Portals
   layers:
   - Default
   - TransparentFX
