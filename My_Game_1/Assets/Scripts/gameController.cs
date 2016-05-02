@@ -4,26 +4,26 @@ using UnityEngine.UI;
 
 public class gameController : MonoBehaviour {
 
-    public int lives = 3;
-    public int bricks = 20;
-    public float resetDelay = 1f;
-    public bool gameOver;
-    public bool won, lost;
-	public static int score, bricksDestroyed = 0;
-	public Vector3 ballPos;
+    public int lives; // set in inspector
+	public int bricks = 20; // set in inspector
+	public float resetDelay = 1f; // set in inspector
+	public bool gameOver; // set in inspector
+	public bool won, lost; // set in inspector
+	public static int score, bricksDestroyed = 0; // set in inspector
+	public Vector3 ballPos; // set in inspector
 
-    public GameObject brickFormation;
-    public GameObject pattle;
-	public GameObject ball;
-	public GameObject clonePattle;
-	public AnnoyingGuy guy;
+	public GameObject brickFormation; // set in inspector
+	public GameObject pattle; // set in inspector
+	public GameObject ball; // set in inspector
+	public GameObject clonePattle; // set in inspector
+	public AnnoyingGuy guy; // set in inspector
 
-	public GameObject scoreTextObj, lifeTextObj;
-	public Text scoreText, lifeText;
+	public GameObject scoreTextObj, lifeTextObj; // set in inspector
+	public Text scoreText, lifeText; // set in inspector
 
-	public SoundController sounds;
+	public SoundController sounds; // set in inspector
 
-    public static gameController instance = null;
+	public static gameController instance = null; // NOT set in inspector (singleton)
     //public GameObject clonePattle;
 
 	// Use this for initialization
@@ -101,9 +101,9 @@ public class gameController : MonoBehaviour {
 
     public void DestroyBrick(GameObject destroyedBrick)
     {
-		guy.rebuildBrick(destroyedBrick);
 		Vector2 p = destroyedBrick.transform.position; // shorthand
 		destroyedBrick.transform.position = new Vector3 (p.x, p.y-10000,-1); // move out of sight
+		guy.rebuildBrick(destroyedBrick);
         bricks--;
 		bricksDestroyed++;
 		score += 30 * bricksDestroyed;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class manageDistractions : MonoBehaviour {
 
@@ -7,19 +8,27 @@ public class manageDistractions : MonoBehaviour {
 	public GameObject kcl, kcr, kjl, kjr;
 	public static GameObject khT, kclT, kcrT, kjlT, kjrT;
 
+	protected enum Distractions { REBUILD_BRICK, WORMHOLE, ROULETTE, KITTENS, SIT_ON_PATTLE }
+
+	protected List<Distractions> distractionQueue;
 
 	public GameObject pattleTarget;
+
+	protected float timer;
 
 	// Use this for initialization
 	void Start () {
 		pattleTarget = GameObject.Find ("PATTLE");
+		distractionQueue = new List<Distractions>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	if (Input.GetKeyDown (KeyCode.K)) {
+		if (Input.GetKeyDown (KeyCode.K)) {
 			spawnKittens();
 		}
+		timer += Time.deltaTime;
 	}
 
 	public void spawnKittens()
@@ -38,5 +47,9 @@ public class manageDistractions : MonoBehaviour {
 
 		KITTENZ.instance.getRefs ();
 		KITTENZ.instance.hideKitties ();
+	}
+
+	public void QueueRandomDistraction() {
+		
 	}
 }
