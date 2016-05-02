@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
 	public float maxSpeed = 200f;
 
     public Rigidbody2D ballCollider;
-    public bool liveBall;
+    public static bool liveBall, firstHit;
 
 	public float angle;
 	public float ballPos;
@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour {
 	protected Transform lastPos;
 	public bool headedDown;
 
-	public GameObject PATTLE;
+	public GameObject livePattle;
 
 	gameController gc;
 	//protected transform pTransform;
@@ -34,9 +34,10 @@ public class Ball : MonoBehaviour {
 	// if starting a new ball reset everything, give ball starting velocity
 	void Update () {
 
-		if (Input.GetButtonDown ("Fire1") && liveBall == false) {
+		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false) {
 			transform.parent = null;
 			liveBall = true;
+			firstHit = false;
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
@@ -55,6 +56,7 @@ public class Ball : MonoBehaviour {
 
 	 void OnCollisionExit2D(Collision2D other)
 	{
+		firstHit = true;
 		if (other.gameObject.CompareTag ("Pattle")) {
 			/*ballCollider.velocity = new Vector2 ((Mathf.Cos (angle) * -3) + ballCollider.velocity.x, ballCollider.velocity.y);
 			if (ballCollider.velocity.magnitude > maxSpeed) {
@@ -93,21 +95,23 @@ public class Ball : MonoBehaviour {
 	{
 		gameController.instance.loseLife ();
 		liveBall = false;
+		firstHit = false;
 		ballCollider.isKinematic = true;
-		transform.position = PATTLE.transform.position;
+		transform.position = livePattle.transform.position;
 		transform.position += new Vector3(0f,.75f,0f);
-		transform.SetParent (PATTLE.transform);
+		transform.SetParent (livePattle.transform);
 	}
 
 	public void ResetBall(){
 		headedDown = false;
 		gameController.instance.loseLife ();
 		liveBall = false;
+		firstHit = false;
 		ballCollider.velocity = new Vector2 (0, 0);
 		ballCollider.isKinematic = true;
-		transform.position = PATTLE.transform.position;
+		transform.position = livePattle.transform.position;
 		transform.position += new Vector3(0f,.75f,0f);
-		transform.SetParent (PATTLE.transform);
+		transform.SetParent (livePattle.transform);
 	}
 
 	//find out if ball is headed down

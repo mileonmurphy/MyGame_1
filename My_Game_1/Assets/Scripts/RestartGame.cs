@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RestartGame : MonoBehaviour {
 
-void OnClick()
+public void ResetME()
 	{
 		Application.LoadLevel("Title");
 	}

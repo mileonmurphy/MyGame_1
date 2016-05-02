@@ -216,11 +216,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.177
+      value: -.00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.49
+      value: -4.48999977
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalPosition.z
@@ -252,7 +252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469188, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.086481914
+      value: .157348856
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aacd4165328c57408f9800158d2c532, type: 2}
@@ -344,15 +344,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: .1271061
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 23
+      value: 26.6104851
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.21008503
+      value: .210085034
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -376,7 +376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.20357391
+      value: .111888081
       objectReference: {fileID: 0}
     - target: {fileID: 466330, guid: dbf1483ca3037a24f93f2af9df986a6a, type: 2}
       propertyPath: m_LocalScale.y
@@ -470,6 +470,51 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 565250176}
   m_Script: {fileID: 11500000, guid: 7ec33a9c177db0e44b1826208a25b5d5, type: 3}
+--- !u!1 &880466658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 880466659}
+  - 114: {fileID: 880466660}
+  m_Layer: 0
+  m_Name: DistractionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880466659
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880466658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.99526703, y: 1.289361, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+--- !u!114 &880466660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880466658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042094eb0b7d2ef4fb9e228f8dc41c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kittenHolderObject: {fileID: 139232, guid: 983b6ea94207c0943bbbd37c70cfef25, type: 2}
+  kcl: {fileID: 172922, guid: 03d87ba2bc4058843b2898c6791da70f, type: 2}
+  kcr: {fileID: 170982, guid: e376271e09f56934eb95359d3990a756, type: 2}
+  kjl: {fileID: 189272, guid: 6935f8533bb65f04da574afefc99cb53, type: 2}
+  kjr: {fileID: 197932, guid: b5ff3ab9ec93f4c47861e0b54593a267, type: 2}
+  pattleTarget: {fileID: 431077544}
 --- !u!1 &902904288
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,8 +702,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: .00250244141, y: 0}
-  m_SizeDelta: {x: 1148, y: 535}
+  m_AnchoredPosition: {x: 211, y: 0}
+  m_SizeDelta: {x: 2617, y: 535}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1031139711
 MonoBehaviour:
@@ -1032,6 +1077,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 733504528}
+  pose: []
+  build: []
+  hitUp: {fileID: 0}
+  hitDown: {fileID: 0}
+  sit: {fileID: 0}
 --- !u!212 &1706096603
 SpriteRenderer:
   m_ObjectHideFlags: 0
