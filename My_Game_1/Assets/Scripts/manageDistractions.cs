@@ -96,7 +96,7 @@ public class manageDistractions : MonoBehaviour {
 
 	protected void QueueRandomDistraction() {
 		QueueDistraction( (Distractions)Random.Range (0, 4) );
-		print (distractionQueue [0]);
+		print ("Next up: " + distractionQueue [distractionQueue.Count]);
 	}
 
 	public void QueueDistraction(Distractions d) {
