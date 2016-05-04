@@ -89,9 +89,11 @@ public class Ball : MonoBehaviour {
 		liveBall = false;
 		firstHit = false;
 		ballCollider.isKinematic = true;
-		transform.position = livePattle.transform.position;
-		transform.position += new Vector3(0f,.75f,0f);
-		transform.SetParent (livePattle.transform);
+		if (livePattle) {
+			transform.position = livePattle.transform.position;
+			transform.position += new Vector3 (0f, .75f, 0f);
+			transform.SetParent (livePattle.transform);
+		}
 	}
 
 	public void ResetBall(){
