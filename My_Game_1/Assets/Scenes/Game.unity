@@ -523,7 +523,7 @@ MonoBehaviour:
   kjr: {fileID: 197932, guid: b5ff3ab9ec93f4c47861e0b54593a267, type: 2}
   pattleTarget: {fileID: 431077544}
   portals: {fileID: 141770160}
-  randomDistractionInterval: 1
+  randomDistractionInterval: 5
 --- !u!1 &902904288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1078,7 @@ GameObject:
   - 4: {fileID: 1706096604}
   - 212: {fileID: 1706096603}
   - 114: {fileID: 1706096602}
+  - 61: {fileID: 1706096605}
   m_Layer: 0
   m_Name: AnnoyingGuy
   m_TagString: Untagged
@@ -1151,6 +1152,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!61 &1706096605
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706096601}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: a9f7dfda1a99278438700a88dae502bd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 40}
 --- !u!1 &1723783702
 GameObject:
   m_ObjectHideFlags: 0
