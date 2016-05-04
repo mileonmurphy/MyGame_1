@@ -8,19 +8,25 @@ public class manageDistractions : MonoBehaviour {
 	public GameObject kcl, kcr, kjl, kjr;
 	public static GameObject khT, kclT, kcrT, kjlT, kjrT;
 
-	protected enum Distractions { REBUILD_BRICK, WORMHOLE, ROULETTE, KITTENS, SIT_ON_PATTLE }
+	public enum Distractions { REBUILD_BRICK, WORMHOLE, SLOT_MACHINE, KITTENS, SIT_ON_PATTLE }
+	protected int numDistractions = 5; // the length of the above enum
 
 	protected List<Distractions> distractionQueue;
 
 	public GameObject pattleTarget;
 
+	public Portals portals;
+
+	protected gameController gc;
+
 	protected float timer;
+	public float randomDistractionInterval; // set in inspector
 
 	// Use this for initialization
 	void Start () {
 		pattleTarget = GameObject.Find ("PATTLE");
 		distractionQueue = new List<Distractions>();
-
+		gc = GameObject.FindObjectOfType<gameController> ();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +34,46 @@ public class manageDistractions : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.K)) {
 			spawnKittens();
 		}
+
+		// increment timer
 		timer += Time.deltaTime;
+
+		// when it is time for another distraction
+		if (timer > randomDistractionInterval) {
+			// add to queue
+			QueueRandomDistraction ();
+			timer -= randomDistractionInterval;
+		}
+	}
+
+	// when a brick is hit, use the next queued distraction
+	public void DequeueDistraction() {
+		
+		// check if there are any distractions
+		if (distractionQueue.Count < 1) return;
+
+		// activate
+		activateDistraction (distractionQueue[distractionQueue.Count-1]);
+
+		// pop
+		distractionQueue.RemoveAt(distractionQueue.Count-1);
+	}
+
+	protected void activateDistraction(Distractions d) {
+		switch (d) {
+		case Distractions.KITTENS:
+			spawnKittens ();
+			break;
+		case Distractions.REBUILD_BRICK:
+			break;
+		case Distractions.SLOT_MACHINE:
+			break;
+		case Distractions.SIT_ON_PATTLE:
+			break;
+		case Distractions.WORMHOLE:
+			portals.MakeWormhole();
+			break;
+		}
 	}
 
 	public void spawnKittens()
@@ -49,7 +94,12 @@ public class manageDistractions : MonoBehaviour {
 		KITTENZ.instance.hideKitties ();
 	}
 
-	public void QueueRandomDistraction() {
-		
+	protected void QueueRandomDistraction() {
+		QueueDistraction( (Distractions)Random.Range (0, 4) );
+		print (distractionQueue [0]);
+	}
+
+	public void QueueDistraction(Distractions d) {
+		distractionQueue.Add (d);
 	}
 }

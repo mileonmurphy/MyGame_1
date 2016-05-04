@@ -522,6 +522,8 @@ MonoBehaviour:
   kjl: {fileID: 189272, guid: 6935f8533bb65f04da574afefc99cb53, type: 2}
   kjr: {fileID: 197932, guid: b5ff3ab9ec93f4c47861e0b54593a267, type: 2}
   pattleTarget: {fileID: 431077544}
+  portals: {fileID: 141770160}
+  randomDistractionInterval: 1
 --- !u!1 &902904288
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89e1371c438d1c469bcbceaa3cca13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
+  lives: 99
   bricks: 42
   resetDelay: 1
   gameOver: 0
@@ -860,7 +862,8 @@ MonoBehaviour:
   lifeTextObj: {fileID: 1723783702}
   scoreText: {fileID: 2125134040}
   lifeText: {fileID: 1723783704}
-  sounds: {fileID: 0}
+  sounds: {fileID: 1631264343}
+  distractionMananger: {fileID: 880466660}
 --- !u!4 &1631264342
 Transform:
   m_ObjectHideFlags: 0

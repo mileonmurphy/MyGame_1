@@ -23,6 +23,8 @@ public class gameController : MonoBehaviour {
 
 	public SoundController sounds; // set in inspector
 
+	public manageDistractions distractionMananger; // set in inspector
+
 	public static gameController instance = null; // NOT set in inspector (singleton)
     //public GameObject clonePattle;
 
@@ -104,6 +106,7 @@ public class gameController : MonoBehaviour {
 		Vector2 p = destroyedBrick.transform.position; // shorthand
 		destroyedBrick.transform.position = new Vector3 (p.x, p.y-10000,-1); // move out of sight
 		guy.rebuildBrick(destroyedBrick);
+		distractionMananger.DequeueDistraction ();
         bricks--;
 		bricksDestroyed++;
 		score += 30 * bricksDestroyed;

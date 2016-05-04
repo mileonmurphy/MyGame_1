@@ -46,14 +46,6 @@ public class Ball : MonoBehaviour {
 
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.CompareTag ("Portal")) {
-            GameObject.FindGameObjectWithTag("Portals").GetComponent<Portals>().FlipScaleRate();
-			Invoke("DestroyPortal", 0.5f);
-            ResetBall();
-        }
-	}
-
 	 void OnCollisionExit2D(Collision2D other)
 	{
 		firstHit = true;
@@ -118,11 +110,4 @@ public class Ball : MonoBehaviour {
 	public bool GetHeadedDown(){
 		return headedDown;
 	}
-
-    //destroy portal
-    public void DestroyPortal()
-    {
-        GameObject.FindGameObjectWithTag("Portals").GetComponent<Portals>().EndPortal();
-        Destroy(GameObject.FindGameObjectWithTag("Portal"));
-    }
 }

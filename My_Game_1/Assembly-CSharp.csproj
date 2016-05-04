@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Portals.cs" />
      <Compile Include="Assets\Scripts\RestartGame.cs" />
      <Compile Include="Assets\Scripts\SoundController.cs" />
+     <Compile Include="Assets\Scripts\Wormhole.cs" />
      <Compile Include="Assets\Scripts\brick.cs" />
      <Compile Include="Assets\Scripts\gameController.cs" />
      <Compile Include="Assets\Scripts\loader.cs" />
