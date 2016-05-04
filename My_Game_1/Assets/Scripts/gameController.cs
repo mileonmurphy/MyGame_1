@@ -25,6 +25,17 @@ public class gameController : MonoBehaviour {
 
 	public manageDistractions distractionMananger; // set in inspector
 
+	protected bool rebuild;
+
+	public bool Rebuild {
+		get {
+			return rebuild;
+		}
+		set {
+			rebuild = value;
+		}
+	}
+
 	public static gameController instance = null; // NOT set in inspector (singleton)
     //public GameObject clonePattle;
 
@@ -105,7 +116,8 @@ public class gameController : MonoBehaviour {
     {
 		Vector2 p = destroyedBrick.transform.position; // shorthand
 		destroyedBrick.transform.position = new Vector3 (p.x, p.y-10000,-1); // move out of sight
-		guy.rebuildBrick(destroyedBrick);
+		if (rebuild)
+			guy.rebuildBrick(destroyedBrick);
 		distractionMananger.DequeueDistraction ();
         bricks--;
 		bricksDestroyed++;

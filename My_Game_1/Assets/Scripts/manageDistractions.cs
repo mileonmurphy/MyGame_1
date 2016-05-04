@@ -65,6 +65,7 @@ public class manageDistractions : MonoBehaviour {
 			spawnKittens ();
 			break;
 		case Distractions.REBUILD_BRICK:
+			gc.Rebuild = true;
 			break;
 		case Distractions.SLOT_MACHINE:
 			break;

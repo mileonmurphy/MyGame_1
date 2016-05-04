@@ -50,7 +50,7 @@ public class Wormhole : MonoBehaviour {
 	public void Shrinking()
 	{
 		transform.localScale -= Vector3.one * scaleRate * Time.deltaTime * 60f;
-		print ("" + transform.localScale.x + " < " + minScale);
+		//print ("" + transform.localScale.x + " < " + minScale);
 		if (transform.localScale.x < minScale) {
 			DestroyPortal ();
 		}
@@ -60,7 +60,7 @@ public class Wormhole : MonoBehaviour {
 	{
 		transform.localScale += Vector3.one * scaleRate * Time.deltaTime * 60f;
 		if (transform.localScale.x > maxScale) {
-			isShrinking = !isShrinking;
+			isShrinking = true;
 		}
 	}
 
@@ -72,12 +72,12 @@ public class Wormhole : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		print ("tigger");
+		//print ("tigger");
 		if (other.gameObject.CompareTag ("Ball")) {
 			//FlipScaleRate();
 			//Invoke("DestroyPortal", 0.5f);
 			// flip
-			isShrinking = !isShrinking;
+			isShrinking = true;
 			other.gameObject.GetComponent<Ball>().ResetBall();
 		}
 	}

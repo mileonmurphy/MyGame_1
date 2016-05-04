@@ -21,13 +21,19 @@ public class AnnoyingGuy : MonoBehaviour {
 	public Sprite hitDown;
 	public Sprite sit;
 	protected Vector3 hammerOffset;
+	protected gameController gc;
 
 	protected List<GameObject> brickQueue;
 
 	// Use this for initialization
 	void Start () {
+		gc = gameController.instance;
 		sr = GetComponent<SpriteRenderer> ();
 		brickQueue = new List<GameObject> ();
+	}
+
+	public void SetState(int s) {
+		state = s;
 	}
 
 	// Update is called once per frame
@@ -127,6 +133,17 @@ public class AnnoyingGuy : MonoBehaviour {
 		// if you are done, change state
 		if (speed * actionTimer > targetDist) {
 			state = 0;
+		}
+	}
+
+	// when hit
+	void OnCollisionEnter2D(Collision2D col) {
+		// hit with ball
+		if (col.gameObject.CompareTag ("Ball")) {
+			SetState (3); // run away
+			actionTimer = 0;
+			startPos = transform.position;
+			gc.Rebuild = false;
 		}
 	}
 }
