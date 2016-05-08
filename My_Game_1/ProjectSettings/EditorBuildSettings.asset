@@ -11,3 +11,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
+  - enabled: 1
+    path: Assets/Scenes/firstStageBattleScene.unity
+  - enabled: 1
+    path: Assets/Scenes/secondStageBattleScene.unity
+  - enabled: 1
+    path: Assets/Scenes/thirdStageBattleScene.unity

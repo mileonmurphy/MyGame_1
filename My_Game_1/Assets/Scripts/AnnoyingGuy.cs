@@ -91,8 +91,9 @@ public class AnnoyingGuy : MonoBehaviour {
 				brickToBuild.transform.position.x,
 				brickToBuild.transform.position.y+10000,
 				-1);
-			//GameObject.Instantiate (brickPrefab,targetPos,Quaternion.identity);
-			brickQueue.RemoveAt (brickQueue.Count-1); // pop last brick
+            gc.bricks++;
+            //GameObject.Instantiate (brickPrefab,targetPos,Quaternion.identity);
+            brickQueue.RemoveAt (brickQueue.Count-1); // pop last brick
 			if (brickQueue.Count > 0)
 				rebuildBrick (brickQueue [brickQueue.Count - 1]);
 			else {

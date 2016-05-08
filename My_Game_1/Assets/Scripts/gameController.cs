@@ -27,6 +27,8 @@ public class gameController : MonoBehaviour {
 
 	protected bool rebuild;
 
+    public static int stage = 1;
+
 	public bool Rebuild {
 		get {
 			return rebuild;
@@ -71,7 +73,29 @@ public class gameController : MonoBehaviour {
 
     void gameStatus()
     {
-        if(bricks < 1)
+        if (bricks == 1)
+        {
+            if (stage == 1)
+            {
+                bricks++; //stops the game from skipping a stage
+                stage++;
+                Application.LoadLevel("firstStageBattleScene");
+            }
+            else if (stage == 2)
+            {
+                bricks++;
+                stage++;
+                Application.LoadLevel("secondStageBattleScene");
+            }
+            else if (stage == 3)
+            {
+                bricks++;
+                stage++;
+                Application.LoadLevel("thirdStageBattleScene"); 
+            }
+        }
+
+        if (bricks < 1)
         {
             won = true;
             Time.timeScale = .25f;
