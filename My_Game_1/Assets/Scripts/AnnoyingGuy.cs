@@ -130,7 +130,7 @@ public class AnnoyingGuy : MonoBehaviour {
 
 	protected void MoveOffscreen() {
 		// move towards top
-		transform.position = Vector3.Lerp(startPos, new Vector3(startPos.x,100,-1), speed * actionTimer / 100);
+		transform.position = Vector3.Lerp(startPos, new Vector3(startPos.x,200,-1), speed * actionTimer / 100);
 		// if you are done, change state
 		if (speed * actionTimer > targetDist) {
 			state = 0;

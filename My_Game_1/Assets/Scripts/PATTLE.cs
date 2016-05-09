@@ -12,6 +12,9 @@ public class PATTLE : MonoBehaviour {
 	public bool hazKittens;
 
 
+	bool leftPressed;
+	bool rightPressed;
+
 
 	// start our paddle in the designated position, assign pattlePosition
 	void Start () {
@@ -21,7 +24,27 @@ public class PATTLE : MonoBehaviour {
 	// move the paddle based on player input, update vars
 	void Update () {
 
-        float xPos = transform.position.x + (Input.GetAxis("Horizontal") * pattleSpeed);
+
+
+		if (Input.GetKeyDown (KeyCode.LeftArrow))
+			leftPressed = true;
+
+		if (Input.GetKeyDown (KeyCode.RightArrow))
+			rightPressed = true;
+
+		if (Input.GetKeyUp (KeyCode.LeftArrow))
+			leftPressed = false;
+
+		if (Input.GetKeyUp (KeyCode.RightArrow))
+			rightPressed = false;
+
+		int dir = 0;
+		if (leftPressed) dir -= 1;
+		if (rightPressed)dir += 1;
+
+        float xPos = transform.position.x + (dir * pattleSpeed);
+
+		print (dir);
 
         //update paddle position, Clamp lets us create boundaries for movement
         pattlePosition = new Vector3(Mathf.Clamp(xPos, -8.25f, 8.25f), -4.49f, -1f);

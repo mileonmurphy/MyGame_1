@@ -55,9 +55,11 @@
      <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\Wormhole.cs" />
      <Compile Include="Assets\Scripts\brick.cs" />
+     <Compile Include="Assets\Scripts\firstAndThirdStageMenuManager.cs" />
      <Compile Include="Assets\Scripts\gameController.cs" />
      <Compile Include="Assets\Scripts\loader.cs" />
      <Compile Include="Assets\Scripts\manageDistractions.cs" />
+     <Compile Include="Assets\Scripts\secondStageMenuManager.cs" />
      <None Include="Assets\Fonts\symtext\Font License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
