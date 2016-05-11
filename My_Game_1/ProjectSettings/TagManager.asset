@@ -10,6 +10,7 @@ TagManager:
   - Shark
   - Frog
   - Portals
+  - PortalCol
   layers:
   - Default
   - TransparentFX

@@ -64,6 +64,8 @@ public class Portals : MonoBehaviour {
 			// put portal ahead of the ball
 			targetPos = new Vector3(ballCollider.position.x + (ballCollider.velocity.normalized * targDist).x, ballCollider.position.y + (ballCollider.velocity.normalized * targDist).y, 0);
 
+			if (!GameObject.FindGameObjectWithTag ("PortalCol").GetComponent <BoxCollider2D> ().bounds.Contains (targetPos))
+				return;
 			//instantiate portal where ball is headed - start small and have it grow
 			port = (GameObject)Instantiate(portalPrefab, targetPos, Quaternion.Euler(0,0,0));
 

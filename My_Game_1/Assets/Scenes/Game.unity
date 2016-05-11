@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224870586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.85, y: 0, z: -9}
+  m_LocalPosition: {x: -21.99, y: 0, z: -9}
   m_LocalScale: {x: 2.13024, y: 1.7025554, z: 2.1837003}
   m_Children: []
   m_Father: {fileID: 0}
@@ -922,6 +922,7 @@ MonoBehaviour:
   lifeText: {fileID: 1723783704}
   sounds: {fileID: 1631264343}
   distractionMananger: {fileID: 880466660}
+  sceneTransition: 0
 --- !u!4 &1631264342
 Transform:
   m_ObjectHideFlags: 0
@@ -1367,7 +1368,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1392,6 +1392,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1004, y: 513}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1989900704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1989900706}
+  - 61: {fileID: 1989900705}
+  m_Layer: 0
+  m_Name: PortalCol
+  m_TagString: PortalCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1989900705
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1989900704}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -4.01, y: 0.31}
+  serializedVersion: 2
+  m_Size: {x: 15.11, y: 3.95}
+--- !u!4 &1989900706
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1989900704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9639158, y: -2.2755814, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &2125134038
 GameObject:
   m_ObjectHideFlags: 0
