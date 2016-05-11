@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Game_1.CSharp", "My_Game_1.CSharp.csproj", "{B6FD9F9A-387B-655F-EEB1-2C5AF05D194F}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{E01CCFB4-310F-8933-543C-AC846D46B9E8}") = "My_Game_1", "Assembly-CSharp.csproj", "{E116033A-93FF-7D75-D3F0-928BE57D63A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6FD9F9A-387B-655F-EEB1-2C5AF05D194F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6FD9F9A-387B-655F-EEB1-2C5AF05D194F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6FD9F9A-387B-655F-EEB1-2C5AF05D194F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6FD9F9A-387B-655F-EEB1-2C5AF05D194F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E116033A-93FF-7D75-D3F0-928BE57D63A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E116033A-93FF-7D75-D3F0-928BE57D63A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E116033A-93FF-7D75-D3F0-928BE57D63A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E116033A-93FF-7D75-D3F0-928BE57D63A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+				GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.IndentWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
 EndGlobal

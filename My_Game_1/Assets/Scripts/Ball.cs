@@ -41,6 +41,11 @@ public class Ball : MonoBehaviour {
 			ballCollider.isKinematic = false;
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
+
+		//if ball gets stuck in horizontal motion
+		if (ballCollider.velocity.y == 0 && ballCollider.velocity.x != 0) {
+			ResetBall();
+		}
 		// angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
 		ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 
