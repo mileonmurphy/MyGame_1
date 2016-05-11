@@ -28,6 +28,7 @@ public class gameController : MonoBehaviour {
 	protected bool rebuild;
 
     public static int stage = 1;
+    public bool sceneTransition = false;
 
 	public bool Rebuild {
 		get {
@@ -61,7 +62,9 @@ public class gameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        if (sceneTransition)
+            ScreenWipe();
 	}
 
     void Setup()
@@ -75,23 +78,10 @@ public class gameController : MonoBehaviour {
     {
         if (bricks == 1)
         {
-            if (stage == 1)
+            if (stage < 4)
             {
-                bricks++; //stops the game from skipping a stage
-                stage++;
-                Application.LoadLevel("firstStageBattleScene");
-            }
-            else if (stage == 2)
-            {
-                bricks++;
-                stage++;
-                Application.LoadLevel("secondStageBattleScene");
-            }
-            else if (stage == 3)
-            {
-                bricks++;
-                stage++;
-                Application.LoadLevel("thirdStageBattleScene"); 
+                GameObject.Find("Ball").GetComponent<Ball>().ballCollider.velocity = new Vector2(0, 0);
+                sceneTransition = true;
             }
         }
 
@@ -149,5 +139,35 @@ public class gameController : MonoBehaviour {
 		scoreText = scoreTextObj.GetComponent<Text> ();
 		scoreText.text = score.ToString ();
         gameStatus();
+    }
+
+    //"screen wipe"
+    public void ScreenWipe()
+    {
+        GameObject camera = GameObject.Find("Main Camera");
+        GameObject wipe = GameObject.Find("ScreenWipe");
+        wipe.transform.position = Vector3.MoveTowards(wipe.transform.position, camera.transform.position, Time.deltaTime * 10);
+        if (wipe.transform.position == camera.transform.position)
+        {
+            sceneTransition = true;
+            if (stage == 1)
+            {
+                bricks++; //stops the game from skipping a stage
+                stage++;
+                Application.LoadLevel("firstStageBattleScene");
+            }
+            else if (stage == 2)
+            {
+                bricks++; //stops the game from skipping a stage
+                stage++;
+                Application.LoadLevel("secondStageBattleScene");
+            }
+            else if (stage == 3)
+            {
+                bricks++; //stops the game from skipping a stage
+                stage++;
+                Application.LoadLevel("thirdStageBattleScene");
+            }
+        }
     }
 }

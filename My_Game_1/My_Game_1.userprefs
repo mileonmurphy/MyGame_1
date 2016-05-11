@@ -1,4 +1,5 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PATTLE.cs">
     <Files>
