@@ -4,8 +4,8 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
     //we want our ball to start with some velocity
-    public float ballStartVelocity = 200f;
-	public float maxSpeed = 200f;
+    public float ballStartVelocity = 200f; // set in inspector
+	public float maxSpeed = 200f; // set in inspector
 
     public Rigidbody2D ballCollider;
     public static bool liveBall, firstHit;
@@ -22,6 +22,8 @@ public class Ball : MonoBehaviour {
 
 	public GameObject livePattle;
 
+	float timeSinceHitPattle;
+
 	gameController gc;
 	//protected transform pTransform;
 
@@ -33,6 +35,12 @@ public class Ball : MonoBehaviour {
 	
 	// if starting a new ball reset everything, give ball starting velocity
 	void Update () {
+		if (liveBall) timeSinceHitPattle += Time.deltaTime;
+		// if stuck or other
+		if (timeSinceHitPattle > 4) {
+			gc.distractionMananger.CreateWormhole ();
+			timeSinceHitPattle = 0;
+		}
 
 		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false) {
 			transform.parent = null;
@@ -42,8 +50,7 @@ public class Ball : MonoBehaviour {
 			ballCollider.AddForce (new Vector3 (0, ballStartVelocity, 0));
 		}
 		// angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
-		ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
-
+		ballCollider.velocity = Vector3.ClampMagnitude(ballCollider.velocity, maxSpeed);
 	}
 
 	 void OnCollisionExit2D(Collision2D other)
@@ -60,23 +67,26 @@ public class Ball : MonoBehaviour {
 			if (ballX < pattleX - centerWidth / 2.0f) {
 				// deflect left
 				ballCollider.velocity = new Vector2 (ballCollider.velocity.x - deflectionPower, ballCollider.velocity.y);
-				// if in the center
+			// if in the center
 			} else if (ballX < pattleX + centerWidth / 2.0f) {
 				// just bounce normally
 				// do nothing
-				// if on the right
+			// if on the right
 			} else {
 				// deflect right
 				ballCollider.velocity = new Vector2 (ballCollider.velocity.x + deflectionPower, ballCollider.velocity.y);
 			}
 			ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 			headedDown = false;
-			gc.sounds.Play("paddle hit");
-		} else if (other.gameObject.name.Contains("Block")) {
-			gc.sounds.Play("brick hit");
+			gc.sounds.Play ("paddle hit");
+			timeSinceHitPattle = 0;
+		} else if (other.gameObject.name.Contains ("Block")) {
+			gc.sounds.Play ("brick hit");
 			headedDown = true;
-		} else if(other.gameObject.CompareTag("Portal")){
+		} else if (other.gameObject.CompareTag ("Portal")) {
 			//do nothing
+		} else if (other.gameObject.CompareTag ("Guy")) {
+			gc.sounds.Play ("hit guy");
 		}else{
 			gc.sounds.Play("wall hit");
 		}

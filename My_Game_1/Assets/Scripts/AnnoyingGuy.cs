@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class AnnoyingGuy : MonoBehaviour {
 
 	protected int state = 0;
-	protected float actionTimer;
-	protected float animTimer;
+	protected float actionTimer = 0;
+	protected float animTimer = 0;
+	protected float hammerTimer = 0;
 	protected Vector3 targetPos;
 	protected Vector3 startPos;
 	public brick brickPrefab;
@@ -39,6 +40,7 @@ public class AnnoyingGuy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		actionTimer += Time.deltaTime;
+		hammerTimer += Time.deltaTime;
 		animTimer += Time.deltaTime;
 		// do stuff based on state
 		switch (state) {
@@ -83,6 +85,12 @@ public class AnnoyingGuy : MonoBehaviour {
 	}
 
 	protected void BuildingBrick() {
+		// sound
+		if (hammerTimer > 0.8) {
+			hammerTimer = 0;
+			gc.sounds.Play ("build");
+		}
+
 		// timer until complete
 		if (actionTimer > 1.9) {
 			state = 0;
@@ -130,7 +138,7 @@ public class AnnoyingGuy : MonoBehaviour {
 
 	protected void MoveOffscreen() {
 		// move towards top
-		transform.position = Vector3.Lerp(startPos, new Vector3(startPos.x,200,-1), speed * actionTimer / 100);
+		transform.position = Vector3.Lerp(startPos, new Vector3(startPos.x,200,-1), speed * actionTimer / 100f);
 		// if you are done, change state
 		if (speed * actionTimer > targetDist) {
 			state = 0;

@@ -44,7 +44,7 @@ public class PATTLE : MonoBehaviour {
 
         float xPos = transform.position.x + (dir * pattleSpeed);
 
-		print (dir);
+		//print (dir);
 
         //update paddle position, Clamp lets us create boundaries for movement
         pattlePosition = new Vector3(Mathf.Clamp(xPos, -8.25f, 8.25f), -4.49f, -1f);

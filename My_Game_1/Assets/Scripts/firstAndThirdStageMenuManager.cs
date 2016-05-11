@@ -43,6 +43,15 @@ public class firstAndThirdStageMenuManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if (Input.GetKeyDown ("return")) {
+			playAcceptSound ();
+		}
+
+		if (Input.GetKeyDown ("up"))
+			playSelectSound ();
+		if (Input.GetKeyDown("down"))
+			playSelectSound ();
+		
         switch(currentState)
         {
             case menuState.selectAction:
@@ -77,8 +86,9 @@ public class firstAndThirdStageMenuManager : MonoBehaviour {
                 attacksListBack.GetComponent<Renderer>().enabled = true;
                 attackBall.GetComponent<Renderer>().enabled = false;
 
-                if (Input.GetKeyDown("return"))
-                    currentState = menuState.playAttack;
+				if (Input.GetKeyDown("return")) {
+	                currentState = menuState.playAttack;
+				}
                 break;
 
             case menuState.playAttack:
@@ -92,14 +102,19 @@ public class firstAndThirdStageMenuManager : MonoBehaviour {
                 if(!ballBounced)
                 {
                     attackBall.transform.position = Vector3.MoveTowards(attackBall.transform.position, GameObject.Find("Paddle").transform.position, Time.deltaTime * 10);
-                    if (attackBall.transform.position == GameObject.Find("Paddle").transform.position)
-                        ballBounced = true;
+					if (attackBall.transform.position == GameObject.Find ("Paddle").transform.position) {
+						ballBounced = true;
+						playBounceSound ();
+					}
+						
                 }
                 else
                 {
                     attackBall.transform.position = Vector3.MoveTowards(attackBall.transform.position, GameObject.Find("Brick").transform.position, Time.deltaTime * 10);
-                    if (attackBall.transform.position == GameObject.Find("Brick").transform.position)
-                        currentState = menuState.brickDestroyed;
+					if (attackBall.transform.position == GameObject.Find ("Brick").transform.position) {
+						currentState = menuState.brickDestroyed;
+						playHitSound ();
+					}
                 }
                 break;
 
@@ -114,5 +129,18 @@ public class firstAndThirdStageMenuManager : MonoBehaviour {
                 Application.LoadLevel("Game");
                 break;
         }
+	}
+
+	void playSelectSound() {
+		gc.sounds.Play ("menu change");
+	}
+	void playAcceptSound() {
+		gc.sounds.Play ("menu select");
+	}
+	void playBounceSound() {
+		gc.sounds.Play ("paddle hit");
+	}
+	void playHitSound() {
+		gc.sounds.Play ("brick hit");
 	}
 }

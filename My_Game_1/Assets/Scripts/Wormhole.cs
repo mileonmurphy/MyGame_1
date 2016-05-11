@@ -79,6 +79,7 @@ public class Wormhole : MonoBehaviour {
 			// flip
 			isShrinking = true;
 			other.gameObject.GetComponent<Ball>().ResetBall();
+			gameController.instance.sounds.Play ("wormhole");
 		}
 	}
 

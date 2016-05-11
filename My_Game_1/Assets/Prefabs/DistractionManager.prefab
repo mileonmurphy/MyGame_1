@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &130338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 418992}
+  - 114: {fileID: 11421220}
+  m_Layer: 0
+  m_Name: DistractionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418992
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.995267, y: 1.289361, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11421220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042094eb0b7d2ef4fb9e228f8dc41c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kittenHolderObject: {fileID: 139232, guid: 983b6ea94207c0943bbbd37c70cfef25, type: 2}
+  kcl: {fileID: 172922, guid: 03d87ba2bc4058843b2898c6791da70f, type: 2}
+  kcr: {fileID: 170982, guid: e376271e09f56934eb95359d3990a756, type: 2}
+  kjl: {fileID: 189272, guid: 6935f8533bb65f04da574afefc99cb53, type: 2}
+  kjr: {fileID: 197932, guid: b5ff3ab9ec93f4c47861e0b54593a267, type: 2}
+  pattleTarget: {fileID: 0}
+  portals: {fileID: 0}
+  slider: {fileID: 0}
+  randomDistractionInterval: 5
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 130338}
+  m_IsPrefabParent: 1

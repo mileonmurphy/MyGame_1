@@ -8,7 +8,7 @@ public class manageDistractions : MonoBehaviour {
 	public GameObject kcl, kcr, kjl, kjr;
 	public static GameObject khT, kclT, kcrT, kjlT, kjrT;
 
-	public enum Distractions { REBUILD_BRICK, WORMHOLE, SLOT_MACHINE, KITTENS, SIT_ON_PATTLE }
+	public enum Distractions { REBUILD_BRICK, SLIDER, SLOT_MACHINE, KITTENS, SIT_ON_PATTLE }
 	protected int numDistractions = 5; // the length of the above enum
 
 	protected List<Distractions> distractionQueue;
@@ -18,6 +18,8 @@ public class manageDistractions : MonoBehaviour {
 	public Portals portals;
 
 	protected gameController gc;
+
+	public Slider slider;
 
 	protected float timer;
 	public float randomDistractionInterval; // set in inspector
@@ -68,11 +70,13 @@ public class manageDistractions : MonoBehaviour {
 			gc.Rebuild = true;
 			break;
 		case Distractions.SLOT_MACHINE:
+			slider.go ();
 			break;
 		case Distractions.SIT_ON_PATTLE:
+			slider.go ();
 			break;
-		case Distractions.WORMHOLE:
-			portals.MakeWormhole();
+		case Distractions.SLIDER:
+			slider.go ();
 			break;
 		}
 	}
@@ -102,5 +106,9 @@ public class manageDistractions : MonoBehaviour {
 
 	public void QueueDistraction(Distractions d) {
 		distractionQueue.Add (d);
+	}
+
+	public void CreateWormhole() {
+		portals.MakeWormhole ();
 	}
 }

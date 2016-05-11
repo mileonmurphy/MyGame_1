@@ -8,10 +8,10 @@ public class KITTENZ : MonoBehaviour {
 	public GameObject kittenJumpL;
 	public GameObject kittenJumpR;
 
-	public float kittenForce = 50f;
-	public float kittenAngle;
+	public float kittenForce; // set in inspector
+	public float kittenAngle; // set in inspector
 
-	public float delayTime = .75f;
+	public float delayTime; // set in inspector
 
 	public static KITTENZ instance = null;
 
@@ -48,6 +48,8 @@ public class KITTENZ : MonoBehaviour {
 			other.GetComponent<Rigidbody2D>().velocity = new Vector2 ((kittenAngle * -3) + other.GetComponent<Rigidbody2D>().velocity.x, other.GetComponent<Rigidbody2D>().velocity.y + kittenForce);
 
 			Invoke("removeKittens", delayTime);
+			print (gameController.instance.sounds);
+			gameController.instance.sounds.Play ("meow");
 
 		}
 	}
