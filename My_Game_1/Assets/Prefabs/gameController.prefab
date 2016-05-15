@@ -388,6 +388,7 @@ MonoBehaviour:
   hitGuySound: {fileID: 8300000, guid: 8bade4256c3814df9a87ad67bbf8f2ea, type: 3}
   meowSound: {fileID: 8300000, guid: 96d7150dfe89e43b791ee0ab1910ec82, type: 3}
   wormhole: {fileID: 8300000, guid: 1ebf273cd1ec0445894348b3da8c54bb, type: 3}
+  battle1: {fileID: 8300000, guid: e9c1db974c151614cb660afce894a9d3, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

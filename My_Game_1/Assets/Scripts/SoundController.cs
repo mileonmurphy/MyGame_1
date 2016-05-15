@@ -21,6 +21,7 @@ public class SoundController : MonoBehaviour {
 	public AudioClip hitGuySound;
 	public AudioClip meowSound;
 	public AudioClip wormhole;
+	public AudioClip battle1;
 
 	// Use this for initialization
 	void Start () {
@@ -92,7 +93,11 @@ public class SoundController : MonoBehaviour {
 	}
 
 	public void PlaySong(string title) {
-		// ambient.clip = song[title]
+		switch(title) {
+			case "battle1":
+				ambient.clip = battle1;
+				break;
+		}
 		ambient.Play ();
 	}
 }
