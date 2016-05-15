@@ -107,7 +107,8 @@ public class Ball : MonoBehaviour {
 
 	void OnBecameInvisible()
 	{
-		gameController.instance.loseLife ();
+		if (liveBall)
+			gameController.instance.loseLife ();
 		liveBall = false;
 		firstHit = false;
 		ballCollider.isKinematic = true;

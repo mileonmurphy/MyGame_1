@@ -78,6 +78,7 @@ public class Wormhole : MonoBehaviour {
 			//Invoke("DestroyPortal", 0.5f);
 			// flip
 			isShrinking = true;
+			gameController.instance.lives++;
 			other.gameObject.GetComponent<Ball>().ResetBall();
 			gameController.instance.sounds.Play ("wormhole");
 		}
