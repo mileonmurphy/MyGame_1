@@ -38,6 +38,7 @@ public class firstAndThirdStageMenuManager : MonoBehaviour {
         ballBounced = false;
 
         currentState = menuState.selectAction;
+		gc.sounds.PlaySong("battle1");
 	}
 	
 	// Update is called once per frame
