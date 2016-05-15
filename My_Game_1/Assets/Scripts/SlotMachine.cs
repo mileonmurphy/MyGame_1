@@ -16,13 +16,13 @@ public class SlotMachine : MonoBehaviour {
 	bool cheating = false;
 	int cheatResult = -1;
 
+	int prevState = -1;
+	float interval = 1.4f;
+
 	// Use this for initialization
 	void Start () {
 		//startSlots ();
 	}
-
-	int prevState = -1;
-	float interval = 0.5f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,6 +34,9 @@ public class SlotMachine : MonoBehaviour {
 		// spinning all
 		case 1:
 			if (prevState != state) {
+				// play sound
+				print(gameController.instance.sounds);
+				gameController.instance.sounds.Play ("slootMachine");
 				randomizeSlots ();
 				prevState = state;
 			}
@@ -86,13 +89,13 @@ public class SlotMachine : MonoBehaviour {
 				rollers [rollers.Length - 3].rotation = Quaternion.Euler (
 					120 * result - 9, 0, -90);
 				prevState = state;
-				// evaluate prize
-				giveReward ();
 			}
 
 			break;
 		// reset
 		case 5:
+			// evaluate prize
+			giveReward ();
 			timer = 0; // reset
 			state = 0; // stop
 			break;

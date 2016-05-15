@@ -68,7 +68,6 @@ public class manageDistractions : MonoBehaviour {
 			break;
 		case Distractions.REBUILD_BRICK:
 			gc.Rebuild = true;
-			gc.sounds.Play("slootMachine");
 			break;
 		case Distractions.SLOT_MACHINE:
 			gc.Slots = true;
@@ -101,7 +100,8 @@ public class manageDistractions : MonoBehaviour {
 	}
 
 	protected void QueueRandomDistraction() {
-		QueueDistraction( (Distractions)Random.Range (0, 4) );
+		//QueueDistraction( (Distractions)Random.Range (0, 4) );
+		QueueDistraction((Distractions)2);
 		print ("Next up: " + distractionQueue [distractionQueue.Count - 1]);
 	}
 

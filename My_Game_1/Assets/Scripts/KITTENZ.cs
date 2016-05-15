@@ -48,7 +48,7 @@ public class KITTENZ : MonoBehaviour {
 			other.GetComponent<Rigidbody2D>().velocity = new Vector2 ((kittenAngle * -3) + other.GetComponent<Rigidbody2D>().velocity.x, other.GetComponent<Rigidbody2D>().velocity.y + kittenForce);
 
 			Invoke("removeKittens", delayTime);
-			print (gameController.instance.sounds);
+			//print (gameController.instance.sounds);
 			gameController.instance.sounds.Play ("meow");
 
 		}

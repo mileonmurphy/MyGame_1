@@ -74,7 +74,7 @@ public class gameController : MonoBehaviour {
 	int counter = 0;
 	// Update is called once per frame
 	void Update () {
-		// end the game
+		// end the game (FOR DEVELOPERS ONLY)
 		if (false) {
 			slotMachine.transform.position = new Vector2 (0, 0);
 			if (counter%10 == 0)
@@ -172,6 +172,7 @@ public class gameController : MonoBehaviour {
 		wipe.transform.position = Vector3.MoveTowards(wipe.transform.position, new Vector3(100,0,0), Time.deltaTime * 50);
         if (wipe.transform.position.x > camera.transform.position.x)
         {
+			Time.timeScale = 1;
 			if (!levelChosen) {
 				sceneTransition = true;
 				levelChosen = true;
