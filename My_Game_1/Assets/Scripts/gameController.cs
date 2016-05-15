@@ -62,9 +62,8 @@ public class gameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (sceneTransition)
-            ScreenWipe();
+		if (sceneTransition)
+			ScreenWipe ();
 	}
 
     void Setup()
@@ -141,6 +140,7 @@ public class gameController : MonoBehaviour {
         gameStatus();
     }
 
+	bool levelChosen = false;
     //"screen wipe"
     public void ScreenWipe()
     {
@@ -149,25 +149,23 @@ public class gameController : MonoBehaviour {
         wipe.transform.position = Vector3.MoveTowards(wipe.transform.position, camera.transform.position, Time.deltaTime * 10);
         if (wipe.transform.position == camera.transform.position)
         {
-            sceneTransition = true;
-            if (stage == 1)
-            {
-                bricks++; //stops the game from skipping a stage
-                stage++;
-                Application.LoadLevel("firstStageBattleScene");
-            }
-            else if (stage == 2)
-            {
-                bricks++; //stops the game from skipping a stage
-                stage++;
-                Application.LoadLevel("secondStageBattleScene");
-            }
-            else if (stage == 3)
-            {
-                bricks++; //stops the game from skipping a stage
-                stage++;
-                Application.LoadLevel("thirdStageBattleScene");
-            }
+			if (!levelChosen) {
+				sceneTransition = true;
+				levelChosen = true;
+				if (stage == 1) {
+					bricks++; //stops the game from skipping a stage
+					stage++;
+					Application.LoadLevel ("firstStageBattleScene");
+				} else if (stage == 2) {
+					bricks++; //stops the game from skipping a stage
+					stage++;
+					Application.LoadLevel ("secondStageBattleScene");
+				} else if (stage == 3) {
+					bricks++; //stops the game from skipping a stage
+					stage++;
+					Application.LoadLevel ("thirdStageBattleScene");
+				}
+			}
         }
     }
 }

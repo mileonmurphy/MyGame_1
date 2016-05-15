@@ -27,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0313415825, y: -4.03563118, z: 0}
-  m_LocalScale: {x: .0176054612, y: .0281843655, z: 0}
+  m_LocalPosition: {x: 0.031341583, y: -4.035631, z: 0}
+  m_LocalScale: {x: 0.017605461, y: 0.028184365, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,6 +39,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124822}
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
@@ -55,12 +56,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124822}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 6200000, guid: a9f7dfda1a99278438700a88dae502bd, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 1.1920929e-07, y: 0}
+  m_Offset: {x: 0.00000011920929, y: 0}
   serializedVersion: 2
-  m_Size: {x: 10.0799999, y: 6.30000114}
+  m_Size: {x: 10.08, y: 6.300001}
 --- !u!61 &6177276
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -68,12 +70,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124822}
   m_Enabled: 0
+  m_Density: 1
   m_Material: {fileID: 6200000, guid: a9f7dfda1a99278438700a88dae502bd, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 1.52587891e-05}
+  m_Offset: {x: 0, y: 0.000015258789}
   serializedVersion: 2
-  m_Size: {x: 10.0799999, y: 6.29999971}
+  m_Size: {x: 10.08, y: 6.2999997}
 --- !u!114 &11490390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,14 +88,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474ba6ec23521e1498828549aa968fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballStartVelocity: 200
-  maxSpeed: 200
-  ballCollider: {fileID: 0}
+  ballStartVelocity: 1000
+  maxSpeed: 10
+  ballCollider: {fileID: 5003176}
   liveBall: 0
+  firstHit: 0
   angle: 0
   ballPos: 0
   posDiff: 0
-  PATTLE: {fileID: 0}
+  deflectionPower: 5
+  centerWidth: 0.6
+  headedDown: 0
+  livePattle: {fileID: 0}
 --- !u!212 &21271952
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,20 +121,34 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 976261b1038b03548a6d222ac59afde8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: ballStartVelocity
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ballCollider
+      value: 
+      objectReference: {fileID: 5003176}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124822}

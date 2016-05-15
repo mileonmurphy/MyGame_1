@@ -58,6 +58,9 @@ public class AnnoyingGuy : MonoBehaviour {
 			MoveOffscreen ();
 			AnimateWalk ();
 			break;
+		case 4:
+			Sitting ();
+			break;
 		default:
 			break;
 		}
@@ -143,6 +146,16 @@ public class AnnoyingGuy : MonoBehaviour {
 		if (speed * actionTimer > targetDist) {
 			state = 0;
 		}
+	}
+
+	public void Sit () {
+		state = 4;
+	}
+
+	protected void Sitting() {
+		sr.sprite = sit;
+		transform.position = gc.pattle.transform.position + new Vector3(0,2.2f,-2);
+		gc.pattle.GetComponent<PATTLE>().SlowPattle ();
 	}
 
 	// when hit

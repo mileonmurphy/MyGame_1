@@ -6,7 +6,7 @@ public class PATTLE : MonoBehaviour {
 
 	public Vector3 pattlePosition;
 	public static Vector3 pattleVelocity;
-	public static float pattleSpeed = 0.2f;
+	public static float pattleSpeed = 0.2f; // set in inspector
 
 	public bool touchBall;
 	public bool hazKittens;
@@ -14,6 +14,8 @@ public class PATTLE : MonoBehaviour {
 
 	bool leftPressed;
 	bool rightPressed;
+
+	bool slowMode = false;
 
 
 	// start our paddle in the designated position, assign pattlePosition
@@ -42,7 +44,13 @@ public class PATTLE : MonoBehaviour {
 		if (leftPressed) dir -= 1;
 		if (rightPressed)dir += 1;
 
-        float xPos = transform.position.x + (dir * pattleSpeed);
+		// if annoying guy sits, slow the paddle
+		float multiplier = 1.0f;
+		if (slowMode) {
+			multiplier = 0.5f;
+			slowMode = false; // have to keep setting slow for permanent
+		}
+        float xPos = transform.position.x + (dir * pattleSpeed * multiplier);
 
 		//print (dir);
 
@@ -56,5 +64,9 @@ public class PATTLE : MonoBehaviour {
 
 	public static Vector2 getVel(){
 		return new Vector2(pattleVelocity.x, pattleVelocity.y);
+	}
+
+	public void SlowPattle() {
+		slowMode = true;
 	}
 }

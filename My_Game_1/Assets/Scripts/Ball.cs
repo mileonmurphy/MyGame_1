@@ -4,11 +4,11 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
     //we want our ball to start with some velocity
-    public float ballStartVelocity = 200f; // set in inspector
-	public float maxSpeed = 200f; // set in inspector
+    public float ballStartVelocity; // set in inspector
+	public float maxSpeed; // set in inspector
 
     public Rigidbody2D ballCollider;
-    public static bool liveBall, firstHit;
+    public bool liveBall, firstHit;
 
 	public float angle;
 	public float ballPos;
@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour {
 	void Awake () {
 		gc = gameController.instance;
         ballCollider = GetComponent<Rigidbody2D>();
+		ballCollider.isKinematic = false;
 	}
 	
 	// if starting a new ball reset everything, give ball starting velocity
@@ -42,7 +43,7 @@ public class Ball : MonoBehaviour {
 			timeSinceHitPattle = 0;
 		}
 
-		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false) {
+		if ((Input.GetButtonDown ("Fire1") || Input.GetKey(KeyCode.Space)) && liveBall == false && transform.parent != null) {
 			transform.parent = null;
 			liveBall = true;
 			firstHit = false;
@@ -56,9 +57,14 @@ public class Ball : MonoBehaviour {
 		}
 		// angle = Vector3.Angle(new Vector3(1,0,0), transform.position - new Vector3(0,-0.75f,0) - PATTLE.transform.position);// ballPos = transform.Position.x;
 		ballCollider.velocity = Vector3.ClampMagnitude(ballCollider.velocity, maxSpeed);
+
+		// extra balls get destroyed
+		if (transform.position.y < -5 && liveBall == false) {
+			GameObject.Destroy (gameObject);
+		}
 	}
 
-	 void OnCollisionExit2D(Collision2D other)
+	void OnCollisionExit2D(Collision2D other)
 	{
 		firstHit = true;
 		if (other.gameObject.CompareTag ("Pattle")) {
@@ -66,6 +72,7 @@ public class Ball : MonoBehaviour {
 			if (ballCollider.velocity.magnitude > maxSpeed) {
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 			}*/
+			print ("pattle");
 			float ballX = ballCollider.transform.position.x;
 			float pattleX = other.transform.position.x;
 			// if on the left side

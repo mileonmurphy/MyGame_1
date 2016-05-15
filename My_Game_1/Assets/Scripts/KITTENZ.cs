@@ -38,7 +38,7 @@ public class KITTENZ : MonoBehaviour {
 	{
 		//if we want we can have individual sides activate based on where the ball is 
 		//when ball enters trigger box, switch sprites, apply kittenforce, destroy kittens after a short delay
-		if (other.gameObject.CompareTag ("Ball") && Ball.firstHit == true) {
+		if (other.gameObject.CompareTag ("Ball") && other.gameObject.GetComponent<Ball>().firstHit == true) {
 			kittenCrouchL.GetComponent<SpriteRenderer> ().enabled = false;
 			kittenCrouchR.GetComponent<SpriteRenderer> ().enabled = false;
 			kittenJumpL.GetComponent<SpriteRenderer> ().enabled = true;
