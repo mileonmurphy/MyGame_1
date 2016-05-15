@@ -90,4 +90,9 @@ public class SoundController : MonoBehaviour {
 		}
 		source.Play ();
 	}
+
+	public void PlaySong(string title) {
+		// ambient.clip = song[title]
+		ambient.Play ();
+	}
 }
