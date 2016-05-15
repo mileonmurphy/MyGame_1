@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 433996}
   - 114: {fileID: 11419984}
+  - 61: {fileID: 6177444}
   m_Layer: 0
   m_Name: Slots
   m_TagString: Untagged
@@ -77,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175086}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -0.00000017881393}
-  m_LocalPosition: {x: 0.025005536, y: 12.100002, z: 0}
+  m_LocalPosition: {x: 0.02, y: -0.04, z: 0}
   m_LocalScale: {x: 0.5060532, y: 0.8331406, z: 0.5060533}
   m_Children: []
   m_Father: {fileID: 433996}
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101564}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -0.00000017881393}
-  m_LocalPosition: {x: 0.02500628, y: 13.760002, z: 0}
+  m_LocalPosition: {x: 0.02, y: 1.62, z: 0}
   m_LocalScale: {x: 0.5060532, y: 0.8331406, z: 0.5060533}
   m_Children: []
   m_Father: {fileID: 433996}
@@ -101,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114574}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071069, w: 0.70710677}
-  m_LocalPosition: {x: -1.22, y: 0.71, z: -2}
+  m_LocalPosition: {x: -11.02, y: -8.5, z: -2}
   m_LocalScale: {x: 0.4, y: 0.5, z: 0.4}
   m_Children:
   - {fileID: 400628}
@@ -116,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193948}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -0.00000017881393}
-  m_LocalPosition: {x: 0.025004793, y: 10.440001, z: 0}
+  m_LocalPosition: {x: 0.02, y: -1.7, z: 0}
   m_LocalScale: {x: 0.5060532, y: 0.8331406, z: 0.5060533}
   m_Children: []
   m_Father: {fileID: 433996}
@@ -220,6 +221,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175086}
   m_Mesh: {fileID: 4300000, guid: 740c6728c9038435892d2f9b17900ae4, type: 3}
+--- !u!61 &6177444
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114574}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5}
 --- !u!95 &9506240
 Animator:
   serializedVersion: 3

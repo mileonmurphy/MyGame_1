@@ -158,7 +158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &141770160 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11452026, guid: 78d49b4471cd84d9a8bee2c180b0c5e2,
@@ -484,7 +484,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 434582, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11408226, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
       propertyPath: brickFormation
@@ -502,6 +502,10 @@ Prefab:
       propertyPath: guy
       value: 
       objectReference: {fileID: 1706096602}
+    - target: {fileID: 11408226, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
+      propertyPath: slotMachine
+      value: 
+      objectReference: {fileID: 1247796707}
     - target: {fileID: 11408226, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
       propertyPath: scoreTextObj
       value: 
@@ -920,6 +924,30 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78d49b4471cd84d9a8bee2c180b0c5e2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1247796706 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 114574, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
+  m_PrefabInternal: {fileID: 1320931159}
+--- !u!114 &1247796707 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11419984, guid: a0d20590410dc4172a61d668f18aa241,
+    type: 2}
+  m_PrefabInternal: {fileID: 1320931159}
+  m_Script: {fileID: 11500000, guid: 7c638b56949ad4b1091a6b5c4735179b, type: 3}
+--- !u!61 &1247796708
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247796706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5}
 --- !u!1001 &1256031120
 Prefab:
   m_ObjectHideFlags: 0
@@ -1026,11 +1054,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 433996, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.36
+      value: -11.02
       objectReference: {fileID: 0}
     - target: {fileID: 433996, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 433996, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1054,7 +1082,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 433996, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 448712, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1079,6 +1107,10 @@ Prefab:
     - target: {fileID: 400628, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
       propertyPath: m_LocalPosition.y
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 114574, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
+      propertyPath: m_Name
+      value: SlotMachine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0d20590410dc4172a61d668f18aa241, type: 2}
@@ -1191,6 +1223,7 @@ MonoBehaviour:
   ball: {fileID: 457799066}
   clonePattle: {fileID: 0}
   guy: {fileID: 1706096602}
+  slotMachine: {fileID: 0}
   scoreTextObj: {fileID: 2125134038}
   lifeTextObj: {fileID: 1723783702}
   scoreText: {fileID: 2125134040}
@@ -1341,7 +1374,7 @@ Transform:
   - {fileID: 444896919}
   - {fileID: 902904291}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
 --- !u!1 &1686114294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1754,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1001 &2023803930
 Prefab:
   m_ObjectHideFlags: 0

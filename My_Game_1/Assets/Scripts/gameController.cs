@@ -17,6 +17,7 @@ public class gameController : MonoBehaviour {
 	public GameObject ball; // set in inspector
 	public GameObject clonePattle; // set in inspector
 	public AnnoyingGuy guy; // set in inspector
+	public SlotMachine slotMachine; // set in inspector
 
 	public GameObject scoreTextObj, lifeTextObj; // set in inspector
 	public Text scoreText, lifeText; // set in inspector
@@ -25,7 +26,8 @@ public class gameController : MonoBehaviour {
 
 	public manageDistractions distractionMananger; // set in inspector
 
-	protected bool rebuild;
+	protected bool rebuild = false;
+	protected bool slots = false;
 
     public static int stage = 1;
     public bool sceneTransition = false;
@@ -36,6 +38,15 @@ public class gameController : MonoBehaviour {
 		}
 		set {
 			rebuild = value;
+		}
+	}
+
+	public bool Slots {
+		get {
+			return slots;
+		}
+		set {
+			slots = value;
 		}
 	}
 
@@ -131,6 +142,10 @@ public class gameController : MonoBehaviour {
 		destroyedBrick.transform.position = new Vector3 (p.x, p.y-10000,-1); // move out of sight
 		if (rebuild)
 			guy.rebuildBrick(destroyedBrick);
+		if (slots) {
+			slotMachine.startSlots (destroyedBrick.transform.position);
+			slots = false;
+		}
 		distractionMananger.DequeueDistraction ();
         bricks--;
 		bricksDestroyed++;

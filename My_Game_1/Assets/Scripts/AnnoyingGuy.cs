@@ -143,7 +143,7 @@ public class AnnoyingGuy : MonoBehaviour {
 		// move towards top
 		transform.position = Vector3.Lerp(startPos, new Vector3(startPos.x,200,-1), speed * actionTimer / 100f);
 		// if you are done, change state
-		if (speed * actionTimer > targetDist) {
+		if (speed * actionTimer / 100f > targetDist) {
 			state = 0;
 		}
 	}
@@ -161,7 +161,7 @@ public class AnnoyingGuy : MonoBehaviour {
 	// when hit
 	void OnCollisionEnter2D(Collision2D col) {
 		// hit with ball
-		if (col.gameObject.CompareTag ("Ball")) {
+		if (col.gameObject.CompareTag ("Ball") && state != 3) {
 			SetState (3); // run away
 			actionTimer = 0;
 			startPos = transform.position;

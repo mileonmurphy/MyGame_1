@@ -13,10 +13,12 @@ public class SlotMachine : MonoBehaviour {
 	float degreesPerSecond = 360;
 
 	float cheatFrequency = 0.5f; // 50% of the results will be triples
+	bool cheating = false;
+	int cheatResult = -1;
 
 	// Use this for initialization
 	void Start () {
-		startSlots ();
+		//startSlots ();
 	}
 
 	int prevState = -1;
@@ -44,7 +46,9 @@ public class SlotMachine : MonoBehaviour {
 			//print ("3: " + rollers [rollers.Length - 1].localRotation.eulerAngles.y);
 			// run once
 			if (prevState != state) {
+				print (rollers [rollers.Length - 1].localRotation.eulerAngles.y);
 				int result = (int)Mathf.Floor (rollers [rollers.Length - 1].localRotation.eulerAngles.y / 120.0f);
+				cheatResult = result;
 				results [2] = result;
 				rollers [rollers.Length - 1].rotation = Quaternion.Euler (
 					120*result - 9, 0, -90);
@@ -58,7 +62,10 @@ public class SlotMachine : MonoBehaviour {
 		case 3:
 			// run once
 			if (prevState != state) {
+				print(rollers [rollers.Length - 2].localRotation.eulerAngles.y);
 				int result = (int)Mathf.Floor (rollers [rollers.Length - 2].localRotation.eulerAngles.y / 120.0f);
+				if (cheating)
+					result = cheatResult;
 				results [1] = result;
 				rollers [rollers.Length - 2].rotation = Quaternion.Euler (
 					120*result - 9, 0, -90);
@@ -73,6 +80,8 @@ public class SlotMachine : MonoBehaviour {
 			// run once
 			if (prevState != state) {
 				int result = (int)Mathf.Floor (rollers [rollers.Length - 3].localRotation.eulerAngles.y / 120.0f);
+				if (cheating)
+					result = cheatResult;
 				results [0] = result;
 				rollers [rollers.Length - 3].rotation = Quaternion.Euler (
 					120 * result - 9, 0, -90);
@@ -85,7 +94,7 @@ public class SlotMachine : MonoBehaviour {
 		// reset
 		case 5:
 			timer = 0; // reset
-			state = 1; // idle
+			state = 0; // stop
 			break;
 		// idle
 		default:
@@ -98,24 +107,32 @@ public class SlotMachine : MonoBehaviour {
 		roller.transform.Rotate(0, timer*degreesPerSecond, 0);
 	}
 
-	void startSlots() {
+	// begins spinning
+	public void startSlots() {
 		state = 1;
+		cheating = (Random.value < cheatFrequency);
 	}
 
+	// sets position and begins spinning
+	public void startSlots(Vector3 pos) {
+		state = 1;
+		transform.position = pos + new Vector3(-0.05f,10000,0);
+	}
+
+	// runs on start, makes it so that the results aren't always the same
 	void randomizeSlots() {
-		bool cheating = (Random.value < cheatFrequency);
 		// make the game more interesting by having more triples (only works sometimes)
-		if (cheating) {
+		/*if (cheating) {
 			print ("cheating");
 			int r = (Random.Range (0, 360));
 			for (int i=0; i<rollers.Length; i++) {
-				rollers [i].rotation = Quaternion.Euler (r-interval*degreesPerSecond*i, 0f, -90f);	
+				rollers [i].rotation = Quaternion.Euler (r - interval*degreesPerSecond*i, 0f, -90f);	
 			}
-		} else {
+		} else { */
 			for (int i=0; i<rollers.Length; i++) {
 				rollers [i].rotation = Quaternion.Euler (Random.Range (0, 360), 0f, -90f);	
 			}
-		}
+		//}
 	}
 
 	void giveReward() {
@@ -141,7 +158,7 @@ public class SlotMachine : MonoBehaviour {
 
 	void createCoins() {
 		for (var i = 0; i < 20; i++) {
-			GameObject coin = (GameObject)GameObject.Instantiate (coinPrefab, transform.position, Quaternion.identity);
+			GameObject coin = (GameObject)GameObject.Instantiate (coinPrefab, transform.position + new Vector3(0,-0.5f,0), Quaternion.identity);
 			coin.GetComponent<Rigidbody2D> ().velocity = new Vector2 (Random.Range (-10, 10), Random.Range (-10, 10));
 		}
 	}
@@ -150,7 +167,7 @@ public class SlotMachine : MonoBehaviour {
 		// create three balls
 		for (var i = 0; i < 3; i++) {
 			print (transform.position);
-			GameObject ball = (GameObject)GameObject.Instantiate (ballPrefab, transform.position + new Vector3(i-1,0,0), Quaternion.identity);
+			GameObject ball = (GameObject)GameObject.Instantiate (ballPrefab, transform.position + new Vector3(i-1,-0.5f,0), Quaternion.identity);
 			ball.GetComponent<Rigidbody2D> ().velocity = new Vector2(Random.Range(-5,5),5);
 		}
 	}
@@ -159,5 +176,11 @@ public class SlotMachine : MonoBehaviour {
 		results[0] = arg1;
 		results[1] = arg2;
 		results[2] = arg3;
+	}
+
+	void OnCollisionExit2D(Collision2D other)
+	{
+		startSlots ();
+
 	}
 }

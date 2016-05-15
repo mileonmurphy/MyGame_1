@@ -70,10 +70,10 @@ public class manageDistractions : MonoBehaviour {
 			gc.Rebuild = true;
 			break;
 		case Distractions.SLOT_MACHINE:
-			slider.go ();
+			gc.Slots = true;
 			break;
 		case Distractions.SIT_ON_PATTLE:
-			slider.go ();
+			gc.guy.Sit ();
 			break;
 		case Distractions.SLIDER:
 			slider.go ();

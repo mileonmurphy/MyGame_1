@@ -72,7 +72,7 @@ public class Ball : MonoBehaviour {
 			if (ballCollider.velocity.magnitude > maxSpeed) {
 				ballCollider.velocity = ballCollider.velocity.normalized * maxSpeed;
 			}*/
-			print ("pattle");
+			//print ("pattle");
 			float ballX = ballCollider.transform.position.x;
 			float pattleX = other.transform.position.x;
 			// if on the left side
@@ -125,9 +125,11 @@ public class Ball : MonoBehaviour {
 		firstHit = false;
 		ballCollider.velocity = new Vector2 (0, 0);
 		ballCollider.isKinematic = true;
-		transform.position = livePattle.transform.position;
-		transform.position += new Vector3(0f,.75f,0f);
-		transform.SetParent (livePattle.transform);
+		if (livePattle) {
+			transform.position = livePattle.transform.position;
+			transform.position += new Vector3 (0f, .75f, 0f);
+			transform.SetParent (livePattle.transform);
+		}
 	}
 
 	//find out if ball is headed down

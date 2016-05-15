@@ -352,12 +352,14 @@ MonoBehaviour:
   ball: {fileID: 0}
   clonePattle: {fileID: 0}
   guy: {fileID: 0}
+  slotMachine: {fileID: 0}
   scoreTextObj: {fileID: 0}
   lifeTextObj: {fileID: 0}
   scoreText: {fileID: 0}
   lifeText: {fileID: 0}
   sounds: {fileID: 11417312}
   distractionMananger: {fileID: 0}
+  sceneTransition: 0
 --- !u!114 &11417312
 MonoBehaviour:
   m_ObjectHideFlags: 1
