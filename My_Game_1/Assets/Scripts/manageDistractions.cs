@@ -68,6 +68,7 @@ public class manageDistractions : MonoBehaviour {
 			break;
 		case Distractions.REBUILD_BRICK:
 			gc.Rebuild = true;
+			gc.sounds.Play("slootMachine");
 			break;
 		case Distractions.SLOT_MACHINE:
 			gc.Slots = true;

@@ -22,6 +22,7 @@ public class SoundController : MonoBehaviour {
 	public AudioClip meowSound;
 	public AudioClip wormhole;
 	public AudioClip battle1;
+	public AudioClip slootMachine;
 
 	// Use this for initialization
 	void Start () {
@@ -85,6 +86,9 @@ public class SoundController : MonoBehaviour {
 			break;
 		case "wormhole":
 			source.clip = wormhole;
+			break;
+		case "slootMachine":
+			source.clip = slootMachine;
 			break;
 		default:
 			break;
