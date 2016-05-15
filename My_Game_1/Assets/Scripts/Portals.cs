@@ -59,7 +59,7 @@ public class Portals : MonoBehaviour {
 	protected void MakingPortal(){
   		
 		//if ball is headed down and somewhat in middle of screen
-		if (!portalExists && ballRef.GetComponent<Ball> ().GetHeadedDown()){ //&& (ballRef.transform.position - pattleRef.transform.position).magnitude > 2){
+		if (!portalExists){ //&& (ballRef.transform.position - pattleRef.transform.position).magnitude > 2){
 
 			// put portal ahead of the ball
 			targetPos = new Vector3(ballCollider.position.x + (ballCollider.velocity.normalized * targDist).x, ballCollider.position.y + (ballCollider.velocity.normalized * targDist).y, 0);
