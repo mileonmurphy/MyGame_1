@@ -70,9 +70,16 @@ public class gameController : MonoBehaviour {
 
         Setup();
 	}
-	
+
+	int counter = 0;
 	// Update is called once per frame
 	void Update () {
+		// end the game
+		if (false) {
+			slotMachine.transform.position = new Vector2 (0, 0);
+			if (counter%10 == 0)
+				slotMachine.EndLevelFast ();
+		}
 		if (sceneTransition)
 			ScreenWipe ();
 	}
@@ -98,6 +105,7 @@ public class gameController : MonoBehaviour {
         if (bricks < 1)
         {
             won = true;
+			// slow mo mode
             Time.timeScale = .25f;
 			//instantiate new brick formation
             //Invoke("Reset", resetDelay);
@@ -161,8 +169,8 @@ public class gameController : MonoBehaviour {
     {
         GameObject camera = GameObject.Find("Main Camera");
         GameObject wipe = GameObject.Find("ScreenWipe");
-        wipe.transform.position = Vector3.MoveTowards(wipe.transform.position, camera.transform.position, Time.deltaTime * 10);
-        if (wipe.transform.position == camera.transform.position)
+		wipe.transform.position = Vector3.MoveTowards(wipe.transform.position, new Vector3(100,0,0), Time.deltaTime * 50);
+        if (wipe.transform.position.x > camera.transform.position.x)
         {
 			if (!levelChosen) {
 				sceneTransition = true;

@@ -183,4 +183,9 @@ public class SlotMachine : MonoBehaviour {
 		startSlots ();
 
 	}
+
+	public void EndLevelFast() {
+		//createCoins ();
+		createBalls ();
+	}
 }

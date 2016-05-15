@@ -121,7 +121,8 @@ public class Ball : MonoBehaviour {
 
 	public void ResetBall(){
 		headedDown = false;
-		gameController.instance.loseLife ();
+		if (liveBall)
+			gameController.instance.loseLife ();
 		liveBall = false;
 		firstHit = false;
 		ballCollider.velocity = new Vector2 (0, 0);
