@@ -526,6 +526,10 @@ Prefab:
       propertyPath: distractionMananger
       value: 
       objectReference: {fileID: 880466660}
+    - target: {fileID: 11417312, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
+      propertyPath: jawz
+      value: 
+      objectReference: {fileID: 8300000, guid: 92e8fc141a551364ebe825dce851c032, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 534c849d575e2439887194ebdcff06cb, type: 2}
   m_IsPrefabParent: 0
@@ -921,6 +925,10 @@ Prefab:
       propertyPath: pattleRef
       value: 
       objectReference: {fileID: 431077544}
+    - target: {fileID: 11452026, guid: 78d49b4471cd84d9a8bee2c180b0c5e2, type: 2}
+      propertyPath: sharkPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 197612, guid: be945198ce9c6f24799cf48ff16aa0ed, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78d49b4471cd84d9a8bee2c180b0c5e2, type: 2}
   m_IsPrefabParent: 0
