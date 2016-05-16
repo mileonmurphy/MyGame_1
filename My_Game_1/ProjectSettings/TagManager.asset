@@ -14,6 +14,7 @@ TagManager:
   - PortalCol
   - SharkUp
   - SharkDown
+  - SharkCol
   layers:
   - Default
   - TransparentFX

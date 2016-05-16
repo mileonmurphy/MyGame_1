@@ -29,5 +29,9 @@ public class sharkRaise : MonoBehaviour {
 			hit = true;
 			other.gameObject.GetComponent<Ball>().ResetBallNoLife();
 		}
+
+		if (other.gameObject.CompareTag ("SharkCol")) {
+			hit = true;
+		}
 	}
 }

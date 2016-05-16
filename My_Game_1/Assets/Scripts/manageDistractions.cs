@@ -83,8 +83,10 @@ public class manageDistractions : MonoBehaviour {
 			slider.go ();
 			break;
 		case Distractions.SHARK:
-			CreateShark ();
-			activateDistraction (Distractions.NONE);
+			if (portals.GetState () != 1) {
+				CreateShark ();
+				activateDistraction (Distractions.NONE);
+			}
 			break;
 		case Distractions.NONE:
 			break;

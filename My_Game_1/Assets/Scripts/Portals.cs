@@ -155,4 +155,8 @@ public class Portals : MonoBehaviour {
 			shark.GetComponent<sharkRaise> ().hit = true;
 		}
 	}
+
+	public int GetState(){
+		return state;
+	}
 }
