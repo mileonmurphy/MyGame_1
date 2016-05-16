@@ -8,8 +8,8 @@ public class manageDistractions : MonoBehaviour {
 	public GameObject kcl, kcr, kjl, kjr;
 	public static GameObject khT, kclT, kcrT, kjlT, kjrT;
 
-	public enum Distractions { REBUILD_BRICK, SLIDER, SLOT_MACHINE, KITTENS, SIT_ON_PATTLE }
-	protected int numDistractions = 5; // the length of the above enum
+	public enum Distractions { SHARK, REBUILD_BRICK, SLIDER, SLOT_MACHINE, KITTENS, SIT_ON_PATTLE, NONE }
+	protected int numDistractions = 7; // the length of the above enum
 
 	protected List<Distractions> distractionQueue;
 
@@ -35,6 +35,10 @@ public class manageDistractions : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.K)) {
 			spawnKittens();
+		}
+
+		if (Input.GetKeyDown(KeyCode.P)){
+			CreateShark();
 		}
 
 		// increment timer
@@ -78,6 +82,12 @@ public class manageDistractions : MonoBehaviour {
 		case Distractions.SLIDER:
 			slider.go ();
 			break;
+		case Distractions.SHARK:
+			CreateShark ();
+			activateDistraction (Distractions.NONE);
+			break;
+		case Distractions.NONE:
+			break;
 		}
 	}
 
@@ -110,5 +120,10 @@ public class manageDistractions : MonoBehaviour {
 
 	public void CreateWormhole() {
 		portals.MakeWormhole ();
+	}
+
+	public void CreateShark()
+	{
+		portals.MakeShark();
 	}
 }

@@ -12,6 +12,8 @@ TagManager:
   - Portals
   - Guy
   - PortalCol
+  - SharkUp
+  - SharkDown
   layers:
   - Default
   - TransparentFX

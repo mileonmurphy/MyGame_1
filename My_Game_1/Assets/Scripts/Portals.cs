@@ -13,6 +13,8 @@ public class Portals : MonoBehaviour {
 	protected float speed = 5.0f;
 	protected float timer;
 	public bool portalExists;
+	public bool finExists;
+	public bool sharkExists;
 	float scaleRate = 0.01f;
 	float maxScale = 5.0f;
 	float minScale;
@@ -28,6 +30,8 @@ public class Portals : MonoBehaviour {
 
     //reference to portal object
     GameObject port = null;
+
+	GameObject shark = null;
 
     // Use this for initialization
     void Start () {
@@ -80,7 +84,46 @@ public class Portals : MonoBehaviour {
 	}
 
 	protected void MakingShark(){
+		if (!sharkExists && ballRef.GetComponent<Ball>().GetHeadedDown())
+		{
+			// put portal ahead of the ball
+			targetPos = new Vector3(ballCollider.position.x + (ballCollider.velocity.normalized * targDist).x, ballCollider.position.y + (ballCollider.velocity.normalized * targDist).y, 0);
 
+			if (!GameObject.FindGameObjectWithTag("PortalCol").GetComponent<BoxCollider2D>().bounds.Contains(targetPos))
+				return;
+			//instantiate portal where ball is headed - start small and have it grow
+			shark = (GameObject)Instantiate(sharkPrefabs[0], new Vector3(targetPos.x, pattleRef.transform.position.y - 2, ballRef.transform.position.z), Quaternion.Euler(0, 0, 0));
+
+			shark.GetComponent<sharkRaise>().portalParent = gameObject.GetComponent<Portals>();
+
+			// acknowledge portal
+			sharkExists = true;
+		}
+
+		if (sharkExists && shark.gameObject.CompareTag("SharkUp"))
+		{
+			if (shark.GetComponent<sharkRaise>().hit)
+			{
+				EndShark();
+				shark = (GameObject)Instantiate(sharkPrefabs[1], shark.transform.position, Quaternion.Euler(0, 0, 0));
+			}
+			else {
+				shark.GetComponent<sharkRaise>().MoveUp();
+			}
+
+		}
+		if (sharkExists &&  shark.gameObject.CompareTag("SharkDown"))
+		{
+			if (shark.GetComponent<sharkLower>().offScreen)
+			{
+				EndShark();
+				sharkExists = false;
+			}
+			else
+			{
+				shark.GetComponent<sharkLower>().MoveDown();
+			}
+		}
 	}
 
 	protected void MakingFrog(){
@@ -94,5 +137,22 @@ public class Portals : MonoBehaviour {
 
 	public void MakeWormhole() {
 		state = 1;
+	}
+
+	public void MakeShark()
+	{
+		state = 2;
+		Invoke ("AutoDipShark", 2.5f);
+	}
+
+	public void EndShark()
+	{
+		Destroy(shark);
+	}
+
+	void AutoSharkDip(){
+		if (sharkExists) {
+			shark.GetComponent<sharkRaise> ().hit = true;
+		}
 	}
 }

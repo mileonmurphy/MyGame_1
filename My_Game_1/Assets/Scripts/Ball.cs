@@ -134,6 +134,19 @@ public class Ball : MonoBehaviour {
 		}
 	}
 
+	public void ResetBallNoLife(){
+		headedDown = false;
+		liveBall = false;
+		firstHit = false;
+		ballCollider.velocity = new Vector2 (0, 0);
+		ballCollider.isKinematic = true;
+		if (livePattle) {
+			transform.position = livePattle.transform.position;
+			transform.position += new Vector3 (0f, .75f, 0f);
+			transform.SetParent (livePattle.transform);
+		}
+	}
+
 	//find out if ball is headed down
 	public bool GetHeadedDown(){
 		return headedDown;
